@@ -382,7 +382,7 @@ display: none;
         </div>
 
         <div class="cert" 
-              data-cover="assets/revou.jpg"
+              data-cover="assets/sertifikat_course_169_3445248_270126222542.jpg"
               data-file="assets/sertifikat_course_169_3445248_270126222542.pdf">
           <strong>Dicoding</strong>
           <div class="muted">Prinsip Pemrograman SOLID — 2026</div>
@@ -613,7 +613,6 @@ display: none;
     // mobile contact jump
     document.getElementById('btn-contact').addEventListener('click', ()=>{ document.getElementById('contact').scrollIntoView({behavior:'smooth'}); });
 
-    // touch-friendly certs scrolling hint
     const certs = document.getElementById('certs-list');
     certs.addEventListener('wheel', (e)=>{ if(Math.abs(e.deltaX) < Math.abs(e.deltaY)) certs.scrollLeft += e.deltaY; });
 
