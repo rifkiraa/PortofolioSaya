@@ -320,6 +320,13 @@
       .nav { flex-wrap: wrap; justify-content: center; }
       .projects-grid { grid-template-columns: 1fr; }
       .intro h2 { font-size: 26px; }
+      
+      /* TAMBAHAN BARU: Lebarkan modal di HP */
+      .modal .modal-card {
+        padding: 16px; 
+        width: 98%; 
+        border-radius: 20px;
+      }
     }
 </style>
 </head>
@@ -761,14 +768,17 @@
           const title = card.querySelector('h4').innerText;
 
           if (videoLink) {
-            // Memasukkan iframe ke dalam modal dengan rasio 16:9 yang responsif
+            // Menggunakan tinggi dinamis (vh) agar sangat responsif untuk video VERTIKAL di HP
             modalBody.innerHTML = `
-              <h2>${title}</h2>
-              <hr style="margin:12px 0; border: 1px solid rgba(0,0,0,0.05);">
-              <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+              <h2 style="font-size: 22px; margin-bottom: 12px; color: var(--text-main);">${title}</h2>
+              <div style="position: relative; width: 100%; height: 75vh; max-height: 700px; background: #000; overflow: hidden; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.2);">
                 <iframe src="${videoLink}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="autoplay; fullscreen" allowfullscreen></iframe>
               </div>
             `;
+            
+            // PENTING: Kembalikan ukuran modal ke normal (karena mungkin sebelumnya dikecilkan oleh popup foto profil)
+            modalCard.style.maxWidth = '800px'; 
+            
             modal.classList.add('open');
             modal.setAttribute('aria-hidden', 'false');
           }
