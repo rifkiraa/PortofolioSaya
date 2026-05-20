@@ -674,10 +674,17 @@
 
     <section id="contact" class="card" style="margin-top:18px">
       <h3>Hubungi Saya</h3>
-      <form class="contact" action="https://formsubmit.co/mrifkiri@gmail.com" method="POST">
-        <input placeholder="Nama" required />
-        <input placeholder="Email" type="email" required />
-        <textarea rows="4" placeholder="Pesan singkat"></textarea>
+      
+      <form class="contact" action="https://api.web3forms.com/submit" method="POST">
+        
+        <input type="hidden" name="access_key" value="7a2ba0a2-50da-4141-a3ce-a1a331ed05ce">
+        
+        <input type="text" name="name" placeholder="Nama" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <textarea name="message" rows="4" placeholder="Pesan singkat" required></textarea>
+        
+        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+
         <div style="display:flex;gap:10px">
           <button class="btn-primary" type="submit">Kirim Pesan</button>
           <button class="cta" type="button" onclick="window.open('mailto:mrifkiri@gmail.com')">Email</button>
