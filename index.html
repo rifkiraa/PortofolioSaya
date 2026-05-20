@@ -825,17 +825,80 @@
 
     // --- 4. CERTIFICATES ---
     const certsContainer = document.getElementById('certs-list');
+    let isDragging = false; 
+
     if (certsContainer) {
+      // Set default cursor
+      certsContainer.style.cursor = 'grab';
+
+      // 1. Scroll menggunakan mouse wheel (Lebih mulus dengan scrollBy smooth)
       certsContainer.addEventListener('wheel', (e) => { 
         if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
-          certsContainer.scrollLeft += e.deltaY; 
+          e.preventDefault(); // Mencegah halaman ikut scroll ke bawah
+          certsContainer.scrollBy({
+            left: e.deltaY > 0 ? 300 : -300, // Geser sepanjang 1 ukuran card
+            behavior: 'smooth' 
+          });
+        }
+      }, { passive: false }); // Diperlukan agar preventDefault() berfungsi baik
+
+      // 2. Scroll menggunakan click & drag (Desktop)
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      certsContainer.addEventListener('mousedown', (e) => {
+        isDown = true;
+        isDragging = false; // Reset status klik
+        
+        // MATIKAN smooth & snap saat ditarik agar responsif (tidak berat/lag)
+        certsContainer.style.scrollBehavior = 'auto'; 
+        certsContainer.style.scrollSnapType = 'none'; 
+        certsContainer.style.cursor = 'grabbing';
+        
+        startX = e.pageX - certsContainer.offsetLeft;
+        scrollLeft = certsContainer.scrollLeft;
+      });
+
+      // Fungsi untuk mengembalikan kondisi setelah dilepas
+      const stopDragging = () => {
+        if (!isDown) return;
+        isDown = false;
+        certsContainer.style.cursor = 'grab';
+        
+        // NYALAKAN kembali smooth & snap agar berhenti di tengah (magnetik)
+        certsContainer.style.scrollBehavior = 'smooth';
+        certsContainer.style.scrollSnapType = 'x mandatory'; 
+      };
+
+      certsContainer.addEventListener('mouseleave', stopDragging);
+      certsContainer.addEventListener('mouseup', stopDragging);
+
+      certsContainer.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        
+        const x = e.pageX - certsContainer.offsetLeft;
+        const walk = (x - startX) * 1.5; // Kecepatan geser (bisa disesuaikan)
+        
+        // Hanya anggap sebagai "drag" jika mouse bergeser lebih dari 5px
+        // Ini mencegah klik meleset (misal tangan gemetar sedikit saat klik)
+        if (Math.abs(walk) > 5) {
+          isDragging = true; 
+        }
+        
+        // Gunakan e.preventDefault() HANYA saat benar-benar dragging
+        if (isDragging) {
+            e.preventDefault(); 
+            certsContainer.scrollLeft = scrollLeft - walk;
         }
       });
     }
 
+    // 3. Render Thumbnail & Aksi Klik
     document.querySelectorAll('.cert').forEach(cert => {
       const cover = cert.dataset.cover;
       const file  = cert.dataset.file;
+      
       if (cover) {
         const originalContent = cert.innerHTML;
         cert.innerHTML = `
@@ -845,11 +908,18 @@
           </div>
         `;
       }
+      
       Object.assign(cert.style, {
-        padding: "12px", borderRadius: "12px", background: "var(--card)", cursor: "pointer",
+        padding: "12px", borderRadius: "12px", background: "var(--card)", cursor: "inherit",
         display: "flex", alignItems: "center", gap: "12px"
       });
-      cert.addEventListener("click", () => {
+      
+      // Buka file HANYA jika murni diklik, bukan setelah di-drag
+      cert.addEventListener("click", (e) => {
+        if (isDragging) {
+          e.preventDefault();
+          return;
+        }
         if (file) window.open(file, "_blank");
       });
     });
