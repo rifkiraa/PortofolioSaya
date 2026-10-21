@@ -3,837 +3,1121 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-  <title>Mochamad Rifki Ramadhan — Interactive Portfolio</title>
+  <title>Mochamad Rifki Ramadhan - Maximalist Neo-Glass Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/profil.png">
 
   <style>
     /* ==========================================================================
-       1. DESIGN TOKENS & HYPER-PASTEL VARIABLES
+       1. MAXIMALIST × GLASSMORPHISM × NEO-BRUTALISM TOKENS
        ========================================================================== */
     :root {
-      --bg-base: #f8fafd;
-      --pastel-mint: #84e6e0;
-      --pastel-pink: #ffb8d9;
-      --pastel-lavender: #c9b8ff;
-      --pastel-peach: #ffd2b8;
-      --pastel-sky: #a3d8ff;
-      --accent-dark: #227c78;
-      --accent-pink-dark: #b83b75;
-      --text-main: #181926;
-      --text-muted: #58607a;
-      --glass-surface: rgba(255, 255, 255, 0.58);
-      --glass-surface-hover: rgba(255, 255, 255, 0.85);
-      --glass-border: rgba(255, 255, 255, 0.9);
-      --glass-shadow: 0 20px 50px -10px rgba(105, 130, 175, 0.12), 0 0 1px 1px rgba(255, 255, 255, 0.8) inset;
-      --radius-xl: 32px;
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --radius-sm: 12px;
-      --maxw: 1180px;
+      --bg-cream: #fdfbf7;
+      --ink: #14141b;
+      --ink-soft: #3b3d52;
+
+      /* High-Craft Bright Pastel Palette */
+      --pastel-mint: #7ef4e6;
+      --pastel-pink: #ff9ce3;
+      --pastel-yellow: #ffef6e;
+      --pastel-lavender: #c5a8ff;
+      --pastel-peach: #ffb685;
+      --pastel-sky: #8fd3ff;
+      --pastel-lime: #b8ff7c;
+
+      /* Glassmorphism Layers */
+      --glass-bg: rgba(255, 255, 255, 0.62);
+      --glass-bg-strong: rgba(255, 255, 255, 0.86);
+      --glass-highlight: rgba(255, 255, 255, 0.9);
+
+      /* Neo-Brutalism Structural Borders & Hard Shadows */
+      --brutal-border: 3px solid var(--ink);
+      --brutal-border-thin: 2px solid var(--ink);
+      --shadow-lg: 8px 8px 0px var(--ink);
+      --shadow-md: 5px 5px 0px var(--ink);
+      --shadow-sm: 3px 3px 0px var(--ink);
+      --shadow-hover: 11px 11px 0px var(--ink);
+      --shadow-active: 2px 2px 0px var(--ink);
+
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-pill: 999px;
+      --maxw: 1220px;
+
       --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-      --smooth: cubic-bezier(0.22, 1, 0.36, 1);
+      --snappy: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; }
 
-    ::-webkit-scrollbar { width: 10px; height: 8px; }
-    ::-webkit-scrollbar-track { background: #f2f6fc; }
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, var(--pastel-mint), var(--pastel-lavender), var(--pastel-pink));
-      border-radius: 99px; border: 2px solid #f2f6fc;
+    /* Neo-Brutalist Custom Scrollbar */
+    ::-webkit-scrollbar { width: 14px; height: 12px; }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-cream);
+      border-left: var(--brutal-border-thin);
     }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--pastel-pink), var(--pastel-yellow), var(--pastel-mint));
+      border: var(--brutal-border-thin);
+      border-radius: 99px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--pastel-lavender); }
 
     body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-base);
-      color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--ink);
       overflow-x: hidden;
       position: relative;
       min-height: 100vh;
-      padding: 24px 20px 100px;
-      display: flex;
-      justify-content: center;
+      padding: 0 0 100px;
+      /* Maximalist Architectural Dot-Grid Overlay */
+      background-image: 
+        radial-gradient(rgba(20, 20, 27, 0.14) 1.5px, transparent 1.5px),
+        linear-gradient(to right, rgba(20, 20, 27, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(20, 20, 27, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px, 52px 52px, 52px 52px;
     }
 
     /* ==========================================================================
-       2. MULTI-LAYERED ANIMATED BACKGROUND & CANVAS
+       2. MULTI-LAYERED BACKGROUND: AURORA BLOBS + INTERACTIVE GEOMETRY CANVAS
        ========================================================================== */
-    #InteractiveCanvas {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -2;
-      pointer-events: none;
+    .aurora-maximal {
+      position: fixed; inset: 0; z-index: -3; pointer-events: none; overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(126, 244, 230, 0.55) 0%, transparent 42%),
+        radial-gradient(circle at 88% 15%, rgba(255, 156, 227, 0.55) 0%, transparent 40%),
+        radial-gradient(circle at 80% 82%, rgba(255, 239, 110, 0.55) 0%, transparent 45%),
+        radial-gradient(circle at 18% 80%, rgba(197, 168, 255, 0.55) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(143, 211, 255, 0.35) 0%, transparent 55%);
+      filter: blur(45px);
+      animation: bgPulse 14s ease-in-out infinite alternate;
     }
-
-    .aurora-mesh {
-      position: fixed;
-      inset: 0;
-      z-index: -3;
-      overflow: hidden;
-      pointer-events: none;
-      background: 
-        radial-gradient(circle at 15% 15%, rgba(132, 230, 224, 0.45) 0%, transparent 45%),
-        radial-gradient(circle at 85% 20%, rgba(255, 184, 217, 0.45) 0%, transparent 45%),
-        radial-gradient(circle at 50% 80%, rgba(201, 184, 255, 0.4) 0%, transparent 50%),
-        radial-gradient(circle at 15% 85%, rgba(255, 210, 184, 0.4) 0%, transparent 40%);
-      filter: blur(50px);
-      animation: auroraPulse 18s ease-in-out infinite alternate;
-    }
-
-    @keyframes auroraPulse {
+    @keyframes bgPulse {
       0% { transform: scale(1) rotate(0deg); }
-      50% { transform: scale(1.08) rotate(2deg); }
-      100% { transform: scale(1.02) rotate(-2deg); }
+      100% { transform: scale(1.08) rotate(2deg); }
     }
 
-    /* Scroll Progress Bar */
-    .scroll-progress {
-      position: fixed; top: 0; left: 0; height: 4px; width: 0%;
-      background: linear-gradient(90deg, var(--pastel-mint), var(--pastel-lavender), var(--pastel-pink), var(--pastel-peach));
-      z-index: 9999; box-shadow: 0 2px 12px rgba(255, 184, 217, 0.8);
+    #MaximalCanvas {
+      position: fixed; inset: 0; width: 100vw; height: 100vh;
+      z-index: -1; pointer-events: none;
+    }
+
+    /* Top Scroll Progress Bar */
+    .scroll-bar-top {
+      position: fixed; top: 0; left: 0; height: 7px; width: 0%;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--pastel-pink),
+        var(--pastel-pink) 12px,
+        var(--pastel-yellow) 12px,
+        var(--pastel-yellow) 24px,
+        var(--pastel-mint) 24px,
+        var(--pastel-mint) 36px
+      );
+      border-bottom: 2px solid var(--ink);
+      z-index: 9999;
       transition: width 0.08s linear;
     }
 
-    /* Custom Cursor Follower (Desktop Only) */
-    .cursor-halo {
-      position: fixed; width: 36px; height: 36px; border-radius: 50%;
-      border: 2px solid rgba(132, 230, 224, 0.8);
-      background: radial-gradient(circle, rgba(255, 184, 217, 0.25) 0%, transparent 70%);
+    /* Custom Neo-Brutalist Cursor Follower */
+    .neo-cursor {
+      position: fixed; width: 34px; height: 34px; border-radius: 50%;
+      border: 2.5px solid var(--ink);
+      background: rgba(255, 239, 110, 0.45);
+      backdrop-filter: blur(4px);
+      box-shadow: 3px 3px 0px var(--ink);
       pointer-events: none; z-index: 9998;
       transform: translate(-50%, -50%);
-      transition: width 0.3s var(--spring), height 0.3s var(--spring), border-color 0.3s ease;
+      transition: width 0.25s var(--spring), height 0.25s var(--spring), background 0.25s ease, border-radius 0.25s ease;
       display: none;
     }
     @media (hover: hover) and (pointer: fine) {
-      .cursor-halo { display: block; }
-      .cursor-halo.active { width: 64px; height: 64px; border-color: var(--pastel-pink); background: rgba(201, 184, 255, 0.2); }
+      .neo-cursor { display: block; }
+      .neo-cursor.hovered {
+        width: 58px; height: 58px;
+        border-radius: 14px;
+        background: rgba(255, 156, 227, 0.55);
+        transform: translate(-50%, -50%) rotate(15deg);
+      }
     }
-
-    .wrap { max-width: var(--maxw); width: 100%; position: relative; z-index: 2; }
 
     /* ==========================================================================
-       3. FLOATING DYNAMIC GLASS HEADER
+       3. KINETIC NEO-BRUTALIST INFINITE MARQUEE RIBBON
+       ========================================================================== */
+    .marquee-ribbon {
+      width: 100%; overflow: hidden;
+      background: var(--pastel-yellow);
+      border-bottom: var(--brutal-border);
+      padding: 10px 0;
+      position: relative; z-index: 10;
+      box-shadow: 0 4px 0px var(--ink);
+    }
+    .marquee-track {
+      display: flex; width: max-content;
+      animation: marqueeScroll 26s linear infinite;
+    }
+    .marquee-ribbon:hover .marquee-track { animation-play-state: paused; }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 13.5px; letter-spacing: 0.8px;
+      text-transform: uppercase; color: var(--ink);
+      padding: 0 22px;
+    }
+    .marquee-star {
+      display: inline-block; width: 18px; height: 18px;
+      background: var(--pastel-pink); border: 2px solid var(--ink);
+      border-radius: 4px; transform: rotate(45deg);
+    }
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .wrap {
+      max-width: var(--maxw); width: 100%;
+      margin: 0 auto; padding: 26px 20px 0;
+      position: relative; z-index: 2;
+    }
+
+    /* ==========================================================================
+       4. NEO-GLASS FLOATING HEADER
        ========================================================================== */
     header {
-      position: sticky; top: 16px; z-index: 90;
+      position: sticky; top: 16px; z-index: 95;
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      margin-bottom: 36px; padding: 12px 24px;
-      background: rgba(255, 255, 255, 0.65);
+      margin-bottom: 38px; padding: 12px 22px;
+      background: var(--glass-bg-strong);
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border-radius: 999px;
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 12px 35px -8px rgba(31, 38, 135, 0.08), 0 0 0 1px rgba(255,255,255,0.6) inset;
-      transition: all 0.4s var(--smooth);
+      border-radius: var(--radius-xl);
+      border: var(--brutal-border);
+      box-shadow: var(--shadow-lg), inset 0 2px 0 #fff;
+      transition: all 0.35s var(--snappy);
     }
     header.scrolled {
-      padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.82);
-      box-shadow: 0 15px 40px -5px rgba(105, 130, 175, 0.16);
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow-md);
     }
 
     .brand { display: flex; align-items: center; gap: 14px; cursor: pointer; }
-    .logo-wrap {
-      position: relative; width: 48px; height: 48px; border-radius: 50%; padding: 3px;
-      background: conic-gradient(from 0deg, var(--pastel-mint), var(--pastel-pink), var(--pastel-lavender), var(--pastel-peach), var(--pastel-mint));
-      animation: spinSlow 8s linear infinite;
-      box-shadow: 0 6px 18px rgba(132, 230, 224, 0.5);
+    .logo-frame {
+      position: relative; width: 54px; height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-pink), var(--pastel-yellow));
+      border: var(--brutal-border-thin);
+      box-shadow: var(--shadow-sm);
+      padding: 3px;
+      transition: transform 0.4s var(--spring), box-shadow 0.3s ease;
     }
-    @keyframes spinSlow { 100% { transform: rotate(360deg); } }
+    .brand:hover .logo-frame {
+      transform: rotate(-8deg) scale(1.08);
+      box-shadow: 5px 5px 0px var(--ink);
+    }
     .logo {
-      width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: 0px -3px;
-      background: #fff; display: block;
-      animation: spinReverse 8s linear infinite;
-      transition: transform 0.4s var(--spring);
+      width: 100%; height: 100%; border-radius: 11px;
+      object-fit: cover; object-position: 0px -3px; display: block;
+      background: #fff;
     }
-    @keyframes spinReverse { 100% { transform: rotate(-360deg); } }
-    .brand:hover .logo-wrap { transform: scale(1.1); }
+    .brand-title {
+      font-family: 'Syne', 'Space Grotesk', sans-serif;
+      font-size: 20px; font-weight: 800; letter-spacing: -0.5px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .live-pill {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px; font-weight: 800; padding: 3px 9px;
+      background: var(--pastel-lime); border: 2px solid var(--ink);
+      border-radius: var(--radius-pill); box-shadow: 2px 2px 0px var(--ink);
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .live-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--ink);
+      animation: pulseDot 1.2s infinite alternate;
+    }
+    @keyframes pulseDot { 0% { transform: scale(0.8); } 100% { transform: scale(1.3); } }
 
-    .brand-text h1 {
-      font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700;
-      letter-spacing: -0.4px;
-      background: linear-gradient(135deg, #181926 0%, #3d4868 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .brand-badge {
-      display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--text-muted);
-    }
-    .status-dot {
-      width: 8px; height: 8px; border-radius: 50%; background: #10b981;
-      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-      animation: blinkDot 2s infinite;
-    }
-    @keyframes blinkDot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .brand-sub { font-size: 12.5px; font-weight: 700; color: var(--ink-soft); margin-top: 2px; }
 
-    .nav { display: flex; gap: 6px; align-items: center; }
-    .nav a {
-      padding: 9px 16px; border-radius: 999px; text-decoration: none;
-      color: var(--text-muted); font-weight: 700; font-size: 13.5px;
-      transition: all 0.3s var(--smooth); position: relative;
+    .nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .nav a:not(.cta) {
+      padding: 9px 16px; border-radius: 12px; text-decoration: none;
+      color: var(--ink); font-weight: 800; font-size: 13.5px;
+      border: 2px solid transparent;
+      transition: all 0.25s var(--spring);
     }
-    .nav a:not(.cta):hover, .nav a.active-link {
-      color: var(--text-main);
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 4px 15px rgba(132, 230, 224, 0.35);
-      transform: translateY(-1px);
+    .nav a:not(.cta):hover {
+      background: var(--pastel-yellow);
+      border-color: var(--ink);
+      box-shadow: var(--shadow-sm);
+      transform: translate(-2px, -2px);
     }
 
     /* ==========================================================================
-       4. HOLOGRAPHIC BUTTONS & CHIPS
+       5. NEO-BRUTALIST TACTILE BUTTONS & MAGNETIC TRIGGERS
        ========================================================================== */
     .cta, .btn-primary, .btn-secondary {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 11px 22px; border-radius: 999px; border: none; cursor: pointer;
-      font-family: inherit; font-weight: 800; font-size: 14px; text-decoration: none;
-      transition: all 0.4s var(--spring); position: relative; overflow: hidden; z-index: 1;
+      padding: 12px 22px; border-radius: 14px;
+      border: var(--brutal-border-thin);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 14px; color: var(--ink);
+      text-decoration: none; cursor: pointer;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.2s var(--spring), box-shadow 0.2s var(--spring), background 0.3s ease;
+      position: relative; overflow: hidden;
     }
     .cta, .btn-primary {
-      background: linear-gradient(135deg, var(--pastel-mint) 0%, var(--pastel-lavender) 50%, var(--pastel-pink) 100%);
+      background: linear-gradient(135deg, var(--pastel-mint) 0%, var(--pastel-yellow) 50%, var(--pastel-pink) 100%);
       background-size: 200% 200%;
-      color: #141624;
-      box-shadow: 0 10px 25px -5px rgba(132, 230, 224, 0.65), 0 0 0 1px rgba(255,255,255,0.8) inset;
-      animation: gradientShift 6s ease infinite;
+      animation: gradientFlow 5s ease infinite;
     }
-    @keyframes gradientShift {
+    .btn-secondary {
+      background: var(--glass-bg-strong);
+      backdrop-filter: blur(12px);
+    }
+    @keyframes gradientFlow {
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
     }
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.8); color: var(--text-main);
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-    }
     .cta:hover, .btn-primary:hover, .btn-secondary:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 16px 32px -6px rgba(255, 184, 217, 0.75);
+      transform: translate(-3px, -3px);
+      box-shadow: 8px 8px 0px var(--ink);
+    }
+    .cta:active, .btn-primary:active, .btn-secondary:active {
+      transform: translate(3px, 3px);
+      box-shadow: var(--shadow-active);
     }
 
     /* ==========================================================================
-       5. HYPER-GLASS CARD SYSTEM WITH 3D TILT GLARE
+       6. MAXIMALIST GLASS-BRUTAL WINDOW CARDS
        ========================================================================== */
     .card {
-      background: var(--glass-surface);
-      backdrop-filter: blur(28px) saturate(160%);
-      -webkit-backdrop-filter: blur(28px) saturate(160%);
+      background: var(--glass-bg);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
       border-radius: var(--radius-xl);
-      padding: 34px;
-      box-shadow: var(--glass-shadow);
-      border: 1.5px solid var(--glass-border);
+      border: var(--brutal-border);
+      box-shadow: var(--shadow-lg), inset 0 2px 0 var(--glass-highlight);
+      padding: 32px;
       position: relative;
       overflow: hidden;
-      transition: border-color 0.4s ease, box-shadow 0.4s ease;
-    }
-    .card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-      background: linear-gradient(90deg, var(--pastel-mint), var(--pastel-pink), var(--pastel-lavender), var(--pastel-peach));
-      opacity: 0.85;
+      transition: box-shadow 0.35s var(--snappy);
     }
 
-    /* Dynamic Spotlight inside 3D Cards */
-    .tilt-card {
-      transform-style: preserve-3d;
-      will-change: transform;
+    /* Retro OS Window Bar Header inside Maximalist Cards */
+    .window-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 18px;
+      margin: -32px -32px 24px -32px;
+      background: linear-gradient(90deg, var(--pastel-lavender), var(--pastel-pink), var(--pastel-yellow), var(--pastel-mint));
+      border-bottom: var(--brutal-border);
     }
+    .win-dots { display: flex; gap: 7px; }
+    .win-dot {
+      width: 13px; height: 13px; border-radius: 50%;
+      border: 2px solid var(--ink);
+      box-shadow: 1px 1px 0px var(--ink);
+    }
+    .win-dot.r { background: #ff6b8b; }
+    .win-dot.y { background: #ffef6e; }
+    .win-dot.g { background: #7ef4e6; }
+    .win-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--ink);
+      background: rgba(255, 255, 255, 0.75);
+      padding: 2px 10px; border-radius: 99px; border: 1.5px solid var(--ink);
+    }
+
+    /* 3D Perspective Glare Layer */
+    .tilt-card { transform-style: preserve-3d; will-change: transform; }
     .card-glare {
-      position: absolute; inset: 0; pointer-events: none; z-index: 4;
-      background: radial-gradient(450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.65), transparent 45%);
+      position: absolute; inset: 0; pointer-events: none; z-index: 3;
+      background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.65), transparent 45%);
       opacity: 0; transition: opacity 0.3s ease;
-      border-radius: inherit;
     }
     .tilt-card:hover .card-glare { opacity: 1; }
 
     /* ==========================================================================
-       6. HERO SECTION & HOLOGRAPHIC PORTRAIT
+       7. HERO SECTION: MAXIMALIST TYPOGRAPHY & COLLAGE STAGE
        ========================================================================== */
     .hero {
-      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 28px; align-items: stretch; margin-bottom: 34px;
+      display: grid; grid-template-columns: 1.18fr 0.82fr; gap: 28px;
+      align-items: stretch; margin-bottom: 36px;
     }
 
-    .role-pill-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-    .role-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 800;
-      background: rgba(255, 255, 255, 0.85); border: 1px solid #fff;
-      box-shadow: 0 4px 12px rgba(132, 230, 224, 0.25);
-      color: var(--accent-dark); letter-spacing: 0.3px;
+    .badge-cluster {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px;
     }
-    .role-pill.pink { color: var(--accent-pink-dark); box-shadow: 0 4px 12px rgba(255, 184, 217, 0.3); }
+    .neo-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: var(--radius-pill);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px; font-weight: 800;
+      border: var(--brutal-border-thin);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s var(--spring);
+    }
+    .neo-tag:hover { transform: translateY(-3px) rotate(-2deg); }
+    .neo-tag.mint { background: var(--pastel-mint); }
+    .neo-tag.pink { background: var(--pastel-pink); }
+    .neo-tag.yellow { background: var(--pastel-yellow); }
+    .neo-tag.lavender { background: var(--pastel-lavender); }
 
     .intro h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(28px, 3.6vw, 42px);
-      line-height: 1.15; font-weight: 700; margin-bottom: 16px;
-      letter-spacing: -1px;
+      font-family: 'Syne', 'Space Grotesk', sans-serif;
+      font-size: clamp(27px, 3.4vw, 40px);
+      line-height: 1.15; font-weight: 800;
+      margin-bottom: 16px; color: var(--ink);
     }
-    .gradient-name {
-      background: linear-gradient(135deg, #1b9994 0%, #9b5de5 50%, #e04788 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    .highlight-box {
       display: inline-block;
-    }
-    .intro p {
-      color: var(--text-muted); line-height: 1.75; font-size: 15px; text-align: justify;
-      margin-bottom: 22px;
+      background: linear-gradient(120deg, var(--pastel-yellow) 0%, var(--pastel-pink) 100%);
+      padding: 2px 12px; border-radius: 12px;
+      border: var(--brutal-border-thin);
+      box-shadow: 4px 4px 0px var(--ink);
+      transform: rotate(-1deg);
     }
 
-    /* Quick Stats Row */
-    .hero-stats {
+    .intro-bio {
+      background: rgba(255, 255, 255, 0.68);
+      border: var(--brutal-border-thin);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-sm);
+      color: var(--ink-soft);
+      line-height: 1.72; font-size: 14.8px; font-weight: 600;
+      text-align: justify; margin-bottom: 22px;
+    }
+
+    /* Maximalist Counter Bento Row */
+    .bento-stats {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px;
     }
-    .stat-box {
-      background: rgba(255, 255, 255, 0.65); border: 1px solid #fff;
-      padding: 12px 14px; border-radius: var(--radius-md); text-align: center;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+    .bento-stat {
+      padding: 12px; border-radius: var(--radius-md);
+      border: var(--brutal-border-thin);
+      box-shadow: var(--shadow-sm);
+      text-align: center;
       transition: transform 0.3s var(--spring);
     }
-    .stat-box:hover { transform: translateY(-4px); background: #fff; }
-    .stat-num {
-      font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 800;
-      background: linear-gradient(135deg, #1b9994, #e04788);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .stat-label { font-size: 11.5px; font-weight: 700; color: var(--text-muted); margin-top: 2px; }
+    .bento-stat:nth-child(1) { background: rgba(126, 244, 230, 0.55); }
+    .bento-stat:nth-child(2) { background: rgba(255, 156, 227, 0.55); }
+    .bento-stat:nth-child(3) { background: rgba(255, 239, 110, 0.65); }
+    .bento-stat:hover { transform: translate(-3px, -3px) rotate(1deg); box-shadow: var(--shadow-md); }
+    .bento-num { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--ink); }
+    .bento-lbl { font-size: 11.5px; font-weight: 800; color: var(--ink); text-transform: uppercase; }
 
-    /* Portrait 3D Orbital Showcase */
+    /* ==========================================================================
+       8. PORTRAIT COLLAGE STAGE WITH SPINNING STARBURST & ORBITS
+       ========================================================================== */
     .portrait-stage {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      position: relative; min-height: 460px; perspective: 1000px;
+      position: relative; min-height: 490px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8), rgba(197, 168, 255, 0.35)),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.25) 0, rgba(255,255,255,0.25) 14px, transparent 14px, transparent 28px);
     }
-    .orbital-ring {
-      position: absolute; width: 340px; height: 340px; border-radius: 50%;
-      border: 2px dashed rgba(155, 93, 229, 0.35);
-      animation: spinSlow 24s linear infinite; pointer-events: none;
+
+    /* Spinning Maximalist Starburst Sticker */
+    .starburst-sticker {
+      position: absolute; top: 58px; right: 20px; z-index: 6;
+      width: 92px; height: 92px;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
     }
-    .orbital-ring-2 {
-      position: absolute; width: 390px; height: 390px; border-radius: 50%;
-      border: 1.5px solid rgba(132, 230, 224, 0.45);
-      animation: spinReverse 18s linear infinite; pointer-events: none;
+    .starburst-svg {
+      width: 100%; height: 100%;
+      animation: spinSlow 12s linear infinite;
+      filter: drop-shadow(3px 3px 0px var(--ink));
     }
+    .starburst-text {
+      position: absolute; font-family: 'Space Grotesk', sans-serif;
+      font-size: 10.5px; font-weight: 800; text-align: center;
+      line-height: 1.1; color: var(--ink); text-transform: uppercase;
+      transform: rotate(-10deg);
+    }
+    @keyframes spinSlow { 100% { transform: rotate(360deg); } }
+
     .bg-shape {
-      position: absolute; width: 320px; height: 320px;
-      background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-mint), var(--pastel-lavender));
+      position: absolute; width: 310px; height: 310px;
+      background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-yellow), var(--pastel-mint));
+      border: var(--brutal-border);
+      box-shadow: var(--shadow-lg);
       border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-      animation: morphBlob 9s ease-in-out infinite alternate;
-      filter: drop-shadow(0 20px 35px rgba(159, 220, 219, 0.45));
-      opacity: 0.85;
+      animation: morphBlob 8s ease-in-out infinite alternate;
     }
     @keyframes morphBlob {
       0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; transform: rotate(0deg) scale(1); }
-      50% { border-radius: 65% 35% 45% 55% / 55% 65% 35% 45%; transform: rotate(10deg) scale(1.05); }
-      100% { border-radius: 35% 65% 60% 40% / 60% 35% 65% 40%; transform: rotate(-10deg) scale(0.98); }
+      50% { border-radius: 65% 35% 45% 55% / 55% 65% 35% 45%; transform: rotate(12deg) scale(1.04); }
+      100% { border-radius: 35% 65% 60% 40% / 60% 35% 65% 40%; transform: rotate(-8deg) scale(0.98); }
     }
 
     .portrait-photo {
-      width: 280px; height: 280px; border-radius: 34px; overflow: hidden;
-      position: relative; z-index: 3;
-      box-shadow: 0 25px 50px -12px rgba(24, 25, 38, 0.18);
-      border: 6px solid rgba(255, 255, 255, 0.85);
-      animation: floatSmooth 6s ease-in-out infinite;
-      transition: transform 0.4s var(--spring);
+      width: 275px; height: 275px; border-radius: 26px; overflow: hidden;
+      position: relative; z-index: 4;
       background: #fff;
+      border: var(--brutal-border);
+      box-shadow: 10px 10px 0px var(--ink);
+      animation: floatBounce 5s ease-in-out infinite;
+      transition: transform 0.35s var(--spring);
     }
-    .portrait-photo:hover { transform: scale(1.04) rotate(2deg); }
+    .portrait-photo:hover { transform: scale(1.05) rotate(-3deg); }
     .portrait-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    @keyframes floatSmooth {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
+    @keyframes floatBounce {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(1.5deg); }
     }
 
-    .floating-badge {
-      position: absolute; z-index: 5; border-radius: 18px; padding: 11px 16px;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 14px 30px rgba(24, 25, 38, 0.08);
-      font-weight: 800; font-size: 12.5px; color: var(--text-main);
-      border: 1.5px solid #fff;
+    .floating-sticker {
+      position: absolute; z-index: 7; border-radius: 14px; padding: 10px 15px;
+      background: var(--glass-bg-strong);
+      backdrop-filter: blur(14px);
+      border: var(--brutal-border-thin);
+      box-shadow: var(--shadow-md);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 12.5px; color: var(--ink);
       display: flex; align-items: center; gap: 8px;
     }
-    .float-1 { top: 24px; left: 12px; animation: floatSmooth 4.5s ease-in-out infinite; }
-    .float-2 { bottom: 28px; right: 12px; animation: floatSmooth 5.2s ease-in-out infinite reverse; }
-    .float-3 { top: 55%; right: 6px; animation: floatSmooth 3.8s ease-in-out infinite 1s; }
+    .float-1 { top: 68px; left: 16px; background: var(--pastel-mint); animation: floatBounce 4.2s ease-in-out infinite; }
+    .float-2 { bottom: 26px; right: 18px; background: var(--pastel-pink); animation: floatBounce 4.8s ease-in-out infinite reverse; }
+    .float-3 { bottom: 90px; left: 18px; background: var(--pastel-yellow); animation: floatBounce 3.8s ease-in-out infinite 0.6s; }
 
     /* ==========================================================================
-       7. DUAL-VIEW SKILLS: RADAR MATRIX & LIQUID BARS
+       9. SKILLS MATRIX: CANDY STRIPED BARS + SVG RADAR CHART
        ========================================================================== */
-    .skills-wrapper {
-      display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: center; margin-top: 20px;
+    .skills-container {
+      display: grid; grid-template-columns: 1fr 310px; gap: 20px; align-items: stretch;
     }
     .skills-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 11px;
     }
-    .skill-item {
-      padding: 13px 16px; border-radius: 16px;
-      background: rgba(255, 255, 255, 0.65); border: 1px solid #fff;
-      transition: all 0.3s var(--spring);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    .skill-box {
+      padding: 11px 14px; border-radius: 14px;
+      background: rgba(255, 255, 255, 0.78);
+      border: var(--brutal-border-thin);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s var(--spring);
     }
-    .skill-item:hover {
-      transform: translateY(-4px) scale(1.02);
+    .skill-box:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: var(--shadow-md);
       background: #fff;
-      box-shadow: 0 12px 24px rgba(132, 230, 224, 0.3);
     }
-    .skill-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-    .skill-head h4 { font-size: 13.5px; font-weight: 800; color: var(--text-main); }
-    .skill-pct { font-size: 12px; font-weight: 800; color: var(--accent-dark); }
+    .skill-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; }
+    .skill-top h4 { font-size: 13px; font-weight: 800; color: var(--ink); }
+    .skill-badge {
+      font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 800;
+      padding: 1px 7px; border-radius: 99px; background: var(--pastel-yellow);
+      border: 1.5px solid var(--ink);
+    }
     .bar {
-      height: 9px; background: rgba(24, 25, 38, 0.06); border-radius: 999px;
-      overflow: hidden; position: relative;
+      height: 12px; background: #fff; border-radius: 99px;
+      border: 2px solid var(--ink); overflow: hidden; position: relative;
     }
     .bar > i {
-      display: block; height: 100%; border-radius: 999px;
-      background: linear-gradient(90deg, var(--pastel-mint), var(--pastel-lavender), var(--pastel-pink));
-      background-size: 200% 100%;
-      width: 0;
+      display: block; height: 100%; width: 0;
+      border-right: 2px solid var(--ink);
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--pastel-mint),
+        var(--pastel-mint) 10px,
+        var(--pastel-pink) 10px,
+        var(--pastel-pink) 20px,
+        var(--pastel-yellow) 20px,
+        var(--pastel-yellow) 30px
+      );
+      background-size: 42px 42px;
+      animation: candyStripe 1.6s linear infinite;
       transition: width 1.4s var(--spring);
-      animation: gradientShift 4s linear infinite;
+    }
+    @keyframes candyStripe {
+      0% { background-position: 0 0; }
+      100% { background-position: 42px 0; }
     }
 
-    .radar-box {
-      background: rgba(255, 255, 255, 0.6);
-      border: 1.5px solid #fff;
-      border-radius: 24px; padding: 18px;
+    .radar-panel {
+      background: rgba(255, 255, 255, 0.78);
+      border: var(--brutal-border-thin);
+      border-radius: 18px;
+      box-shadow: var(--shadow-sm);
+      padding: 14px;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      box-shadow: inset 0 0 30px rgba(201, 184, 255, 0.2);
     }
-    .radar-title { font-size: 13px; font-weight: 800; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.8px; }
+    .radar-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px; font-weight: 800; text-transform: uppercase;
+      background: var(--pastel-lavender); padding: 3px 12px;
+      border-radius: 99px; border: 1.5px solid var(--ink); margin-bottom: 6px;
+    }
 
     /* ==========================================================================
-       8. SECTION HEADERS & FILTER PILLS
+       10. SECTION HEADINGS & FILTER TABS
        ========================================================================== */
-    .section-head {
-      display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+    .sec-header {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
       gap: 16px; margin-bottom: 24px;
     }
-    .section-head h3 {
-      font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700;
-      display: flex; align-items: center; gap: 10px;
+    .sec-title-wrap { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .sec-header h3 {
+      font-family: 'Syne', 'Space Grotesk', sans-serif;
+      font-size: 28px; font-weight: 800; color: var(--ink);
     }
-    .section-badge {
-      font-size: 12px; padding: 4px 12px; border-radius: 99px;
-      background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-pink));
-      color: #111; font-weight: 800;
+    .count-pill {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12.5px; font-weight: 800; padding: 5px 13px;
+      background: var(--pastel-pink); border: var(--brutal-border-thin);
+      border-radius: var(--radius-pill); box-shadow: var(--shadow-sm);
     }
-    .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
-    .filter-btn {
-      padding: 8px 16px; border-radius: 99px; border: 1px solid #fff;
-      background: rgba(255, 255, 255, 0.6); color: var(--text-muted);
-      font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
-      transition: all 0.3s var(--spring);
+
+    .filter-group { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter-chip {
+      padding: 8px 16px; border-radius: var(--radius-pill);
+      border: var(--brutal-border-thin);
+      background: rgba(255, 255, 255, 0.85);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px; font-weight: 800; color: var(--ink);
+      cursor: pointer; box-shadow: var(--shadow-sm);
+      transition: all 0.25s var(--spring);
     }
-    .filter-btn.active, .filter-btn:hover {
-      background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-pink));
-      color: #141624; transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(132, 230, 224, 0.4);
+    .filter-chip.active, .filter-chip:hover {
+      background: var(--pastel-mint);
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow-md);
     }
 
     /* ==========================================================================
-       9. 3D INTERACTIVE PROJECT & VIDEO CARDS
+       11. MAXIMALIST NEO-GLASS PROJECT & VIDEO CARDS
        ========================================================================== */
     .projects-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(265px, 1fr)); gap: 22px;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); gap: 24px;
     }
     .project-card {
-      padding: 18px; border-radius: 24px; cursor: pointer;
-      background: rgba(255, 255, 255, 0.65);
-      border: 1.5px solid rgba(255, 255, 255, 0.9);
-      transition: transform 0.25s ease-out, box-shadow 0.35s ease, background 0.3s ease;
+      padding: 18px; border-radius: 22px; cursor: pointer;
+      background: var(--glass-bg-strong);
+      backdrop-filter: blur(18px);
+      border: var(--brutal-border);
+      box-shadow: var(--shadow-md);
+      transition: transform 0.25s var(--spring), box-shadow 0.25s var(--spring), background 0.3s ease;
       position: relative; overflow: hidden;
       display: flex; flex-direction: column; justify-content: space-between;
     }
+    .project-card:nth-child(4n+1) { background: linear-gradient(160deg, rgba(255,255,255,0.9), rgba(126,244,230,0.35)); }
+    .project-card:nth-child(4n+2) { background: linear-gradient(160deg, rgba(255,255,255,0.9), rgba(255,156,227,0.35)); }
+    .project-card:nth-child(4n+3) { background: linear-gradient(160deg, rgba(255,255,255,0.9), rgba(255,239,110,0.4)); }
+    .project-card:nth-child(4n+4) { background: linear-gradient(160deg, rgba(255,255,255,0.9), rgba(197,168,255,0.38)); }
+
     .project-card:hover {
-      background: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 24px 48px -12px rgba(132, 230, 224, 0.45), 0 0 25px rgba(255, 184, 217, 0.35);
+      box-shadow: var(--shadow-hover);
+      background: #fff;
     }
+
     .project-thumb {
-      height: 175px; border-radius: 16px; margin-bottom: 16px;
-      background: linear-gradient(135deg, rgba(255, 184, 217, 0.35), rgba(132, 230, 224, 0.35));
+      height: 175px; border-radius: 14px; margin-bottom: 16px;
+      border: var(--brutal-border-thin);
+      box-shadow: var(--shadow-sm);
+      background: var(--pastel-sky);
       position: relative; overflow: hidden;
     }
     .project-thumb img {
       width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.7s var(--smooth);
+      transition: transform 0.6s var(--snappy);
     }
-    .project-card:hover .project-thumb img { transform: scale(1.1) rotate(1.5deg); }
+    .project-card:hover .project-thumb img { transform: scale(1.1) rotate(2deg); }
 
-    .play-orb {
+    .card-corner-badge {
+      position: absolute; top: 10px; right: 10px; z-index: 3;
+      background: var(--pastel-yellow); border: 2px solid var(--ink);
+      border-radius: 8px; padding: 3px 8px;
+      font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 800;
+      box-shadow: 2px 2px 0px var(--ink);
+    }
+
+    .play-neo {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 54px; height: 54px; border-radius: 50%;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(8px);
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--pastel-yellow);
+      border: var(--brutal-border-thin);
+      box-shadow: 4px 4px 0px var(--ink);
       display: flex; align-items: center; justify-content: center;
-      color: #181926; font-size: 20px; z-index: 3;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
-      transition: all 0.4s var(--spring);
+      color: var(--ink); font-size: 22px; font-weight: 800; z-index: 3;
+      transition: all 0.35s var(--spring);
     }
-    .project-card:hover .play-orb {
-      transform: translate(-50%, -50%) scale(1.18);
-      background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-pink));
+    .project-card:hover .play-neo {
+      transform: translate(-50%, -50%) scale(1.18) rotate(-10deg);
+      background: var(--pastel-pink);
     }
 
-    .project-card h4 { font-size: 17px; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
-    .project-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .project-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18.5px; font-weight: 800; color: var(--ink); margin-bottom: 6px;
+    }
+    .project-desc-short {
+      font-size: 13.2px; font-weight: 600; color: var(--ink-soft);
+      margin-bottom: 14px; line-height: 1.5;
+    }
     .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; }
     .tag {
-      font-size: 11px; padding: 5px 11px; border-radius: 999px;
-      background: linear-gradient(135deg, rgba(132, 230, 224, 0.25), rgba(201, 184, 255, 0.25));
-      color: #215e5b; font-weight: 800; border: 1px solid rgba(255,255,255,0.8);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px; font-weight: 800;
+      padding: 4px 10px; border-radius: 8px;
+      background: #fff; color: var(--ink);
+      border: 1.8px solid var(--ink);
+      box-shadow: 2px 2px 0px var(--ink);
     }
+    .tag:nth-child(even) { background: var(--pastel-mint); }
+    .tag:nth-child(3n) { background: var(--pastel-lavender); }
 
     /* ==========================================================================
-       10. CERTIFICATES INTERACTIVE CAROUSEL WITH CONTROLS
+       12. CERTIFICATES NEO-CAROUSEL
        ========================================================================== */
-    .cert-controls { display: flex; gap: 8px; }
-    .carousel-btn {
-      width: 40px; height: 40px; border-radius: 50%; border: 1px solid #fff;
-      background: rgba(255,255,255,0.8); cursor: pointer; font-weight: 800; font-size: 16px;
+    .carousel-nav { display: flex; gap: 10px; }
+    .nav-circle {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--pastel-yellow);
+      border: var(--brutal-border-thin);
+      box-shadow: var(--shadow-sm);
+      font-size: 18px; font-weight: 800; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: all 0.3s var(--spring);
+      transition: all 0.25s var(--spring);
     }
-    .carousel-btn:hover {
-      background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-pink));
-      transform: scale(1.1);
+    .nav-circle:hover {
+      background: var(--pastel-pink);
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow-md);
     }
 
     .certs {
-      display: flex; gap: 16px; overflow-x: auto; padding: 12px 4px 24px;
-      scroll-snap-type: x mandatory; scrollbar-width: thin;
+      display: flex; gap: 18px; overflow-x: auto; padding: 12px 6px 24px;
+      scroll-snap-type: x mandatory;
     }
     .cert {
-      min-width: 285px; max-width: 285px; border-radius: 20px; padding: 14px;
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 10px 25px rgba(105, 130, 175, 0.08);
-      border: 1.5px solid #fff;
+      min-width: 295px; max-width: 295px;
+      border-radius: 18px; padding: 14px;
+      background: var(--glass-bg-strong);
+      border: var(--brutal-border-thin);
+      box-shadow: var(--shadow-md);
       scroll-snap-align: start;
-      transition: all 0.35s var(--spring);
-      display: flex; align-items: center; gap: 14px; cursor: pointer;
-      user-select: none;
+      transition: all 0.3s var(--spring);
+      display: flex; align-items: center; gap: 14px;
+      cursor: pointer; user-select: none;
     }
-    .cert:hover {
-      transform: translateY(-8px) scale(1.02);
-      background: #fff;
-      border-color: var(--pastel-mint);
-      box-shadow: 0 18px 35px rgba(132, 230, 224, 0.35);
+    .cert:nth-child(odd):hover {
+      transform: translateY(-7px) rotate(-1.5deg);
+      background: var(--pastel-mint);
+      box-shadow: var(--shadow-lg);
     }
-    .cert strong { color: var(--text-main); font-size: 14.5px; font-weight: 800; display: block; margin-bottom: 3px; }
+    .cert:nth-child(even):hover {
+      transform: translateY(-7px) rotate(1.5deg);
+      background: var(--pastel-yellow);
+      box-shadow: var(--shadow-lg);
+    }
+    .cert strong {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--ink); font-size: 15px; font-weight: 800;
+      display: block; margin-bottom: 3px;
+    }
 
     /* ==========================================================================
-       11. CONTACT SECTION
+       13. CONTACT SECTION (NEO-GLASS FORM)
        ========================================================================== */
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1.3fr; gap: 28px; align-items: stretch; margin-top: 12px;
+    .contact-layout {
+      display: grid; grid-template-columns: 1fr 1.3fr; gap: 26px; align-items: stretch;
     }
-    .contact-info-box {
-      background: linear-gradient(145deg, rgba(132, 230, 224, 0.3), rgba(255, 184, 217, 0.3), rgba(201, 184, 255, 0.3));
-      border-radius: 24px; padding: 26px; border: 1.5px solid #fff;
+    .contact-card-left {
+      background: linear-gradient(145deg, var(--pastel-mint), var(--pastel-yellow), var(--pastel-pink));
+      border: var(--brutal-border-thin);
+      border-radius: 20px; padding: 24px;
+      box-shadow: var(--shadow-md);
       display: flex; flex-direction: column; justify-content: space-between;
     }
-    .contact-mini-card {
-      background: rgba(255,255,255,0.8); padding: 14px 16px; border-radius: 16px;
-      margin-top: 12px; border: 1px solid #fff; display: flex; align-items: center; gap: 12px;
+    .contact-pill-item {
+      background: rgba(255, 255, 255, 0.9);
+      border: var(--brutal-border-thin);
+      box-shadow: var(--shadow-sm);
+      border-radius: 14px; padding: 13px 16px; margin-top: 12px;
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
     }
     .contact { display: flex; flex-direction: column; gap: 14px; }
     .contact input, .contact textarea {
-      width: 100%; padding: 16px 18px; border-radius: 16px;
-      border: 2px solid rgba(255, 255, 255, 0.9);
-      background: rgba(255, 255, 255, 0.7);
-      font-family: inherit; font-size: 14.5px; font-weight: 500; color: var(--text-main);
-      outline: none; transition: all 0.3s var(--smooth);
+      width: 100%; padding: 15px 18px; border-radius: 14px;
+      border: var(--brutal-border-thin);
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: var(--shadow-sm);
+      font-family: inherit; font-size: 14.5px; font-weight: 700; color: var(--ink);
+      outline: none; transition: all 0.25s var(--spring);
     }
+    .contact input::placeholder, .contact textarea::placeholder { color: #6a6d85; font-weight: 600; }
     .contact input:focus, .contact textarea:focus {
-      border-color: var(--pastel-mint); background: #fff;
-      box-shadow: 0 10px 25px rgba(132, 230, 224, 0.25);
-      transform: translateY(-2px);
+      background: #fff;
+      transform: translate(-3px, -3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--ink);
     }
 
     /* ==========================================================================
-       12. RESPONSIVE MODAL & MOBILE SLIDING BOTTOM-SHEET
+       14. DUAL-MODE MODAL (DESKTOP NEO-WINDOW & MOBILE SLIDING BOTTOM-SHEET)
        ========================================================================== */
     .modal {
       position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
-      background: rgba(20, 22, 36, 0.45);
+      background: rgba(20, 20, 27, 0.55);
       backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       z-index: 1000; opacity: 0; pointer-events: none;
-      transition: opacity 0.35s var(--smooth);
+      transition: opacity 0.3s ease;
     }
     .modal.open { opacity: 1; pointer-events: auto; }
     .modal .modal-card {
       width: 92%; max-width: 820px; max-height: 88vh; overflow-y: auto;
-      background: rgba(255, 255, 255, 0.96);
-      border: 2px solid #fff;
-      border-radius: 30px; padding: 32px; position: relative;
-      transform: scale(0.92) translateY(30px);
-      transition: transform 0.45s var(--spring);
-      box-shadow: 0 30px 70px rgba(24, 25, 38, 0.22);
+      background: var(--bg-cream);
+      border: var(--brutal-border);
+      border-radius: 26px; padding: 28px; position: relative;
+      box-shadow: 12px 12px 0px var(--ink);
+      transform: scale(0.9) translateY(30px);
+      transition: transform 0.4s var(--spring);
     }
     .modal.open .modal-card { transform: scale(1) translateY(0); }
 
-    .sheet-pill {
-      display: none; width: 48px; height: 5px; background: rgba(0,0,0,0.15);
-      border-radius: 99px; margin: 0 auto 14px;
+    .sheet-handle {
+      display: none; width: 54px; height: 6px;
+      background: var(--ink); border-radius: 99px;
+      margin: 0 auto 14px;
     }
 
     .btn-close {
-      position: sticky; top: 0; float: right; width: 40px; height: 40px;
-      border-radius: 50%; border: none;
-      background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
-      color: #1e293b; font-size: 16px; font-weight: 800; cursor: pointer;
+      position: sticky; top: 0; float: right;
+      width: 42px; height: 42px; border-radius: 12px;
+      border: var(--brutal-border-thin);
+      background: var(--pastel-pink); color: var(--ink);
+      font-size: 18px; font-weight: 800; cursor: pointer;
+      box-shadow: var(--shadow-sm);
       display: flex; align-items: center; justify-content: center;
-      transition: all 0.3s var(--spring); z-index: 10;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: all 0.25s var(--spring); z-index: 10;
     }
-    .btn-close:hover { background: #ff4757; color: #fff; transform: rotate(90deg) scale(1.1); }
+    .btn-close:hover {
+      background: #ff4757; color: #fff;
+      transform: rotate(90deg) scale(1.08);
+    }
 
     /* Toast Notification */
-    .toast-box {
-      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(100px);
-      background: rgba(24, 25, 38, 0.92); color: #fff; padding: 12px 24px;
-      border-radius: 999px; font-size: 13.5px; font-weight: 700;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2); z-index: 2000;
-      transition: transform 0.4s var(--spring); pointer-events: none;
+    .neo-toast {
+      position: fixed; bottom: 28px; left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      background: var(--pastel-yellow); color: var(--ink);
+      border: var(--brutal-border-thin);
+      box-shadow: var(--shadow-md);
+      padding: 12px 24px; border-radius: var(--radius-pill);
+      font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 800;
+      z-index: 2000; transition: transform 0.4s var(--spring);
+      pointer-events: none;
     }
-    .toast-box.show { transform: translateX(-50%) translateY(0); }
+    .neo-toast.show { transform: translateX(-50%) translateY(0); }
 
     /* ==========================================================================
-       13. WHATSAPP FLOATING ORB
+       15. WHATSAPP NEO-BRUTALIST ORB
        ========================================================================== */
     .wa-float {
       position: fixed; bottom: 28px; right: 28px; z-index: 95;
-      width: 62px; height: 62px;
-      background: linear-gradient(135deg, #25d366, #128c7e);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: transform 0.35s var(--spring);
-      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.45);
-      border: 2px solid #fff;
-      animation: floatSmooth 4s ease-in-out infinite;
+      width: 64px; height: 64px;
+      background: #25d366;
+      border: var(--brutal-border);
+      box-shadow: 6px 6px 0px var(--ink);
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s var(--spring);
+      animation: floatBounce 4s ease-in-out infinite;
     }
-    .wa-float::after {
-      content: ''; position: absolute; inset: -4px; border-radius: 50%;
-      border: 2px solid #25d366; animation: radarPulse 2.2s ease-out infinite;
+    .wa-float img { width: 34px; height: 34px; }
+    .wa-float:hover {
+      transform: translate(-3px, -3px) rotate(10deg) scale(1.1);
+      box-shadow: 9px 9px 0px var(--ink);
     }
-    .wa-float img { width: 32px; height: 32px; }
-    .wa-float:hover { transform: scale(1.14) rotate(8deg); }
-    @keyframes radarPulse { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(1.65); opacity: 0; } }
 
     /* ==========================================================================
-       14. UTILITIES & MOBILE RESPONSIVENESS (BOTTOM SHEET MODE)
+       16. FOOTER & MOBILE RESPONSIVENESS
        ========================================================================== */
-    .muted { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
-    .fade-up { opacity: 0; transform: translateY(28px); transition: all 0.8s var(--smooth); }
+    .muted { color: var(--ink-soft); font-size: 14px; font-weight: 600; line-height: 1.6; }
+    .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.75s var(--snappy); }
     .reveal { opacity: 1; transform: translateY(0); }
+
     footer {
-      margin-top: 48px; padding: 24px; text-align: center;
-      color: var(--text-muted); font-weight: 700; font-size: 14px;
-      background: rgba(255,255,255,0.5); border-radius: 999px; border: 1px solid #fff;
+      margin-top: 48px; padding: 20px 24px; text-align: center;
+      background: var(--pastel-yellow);
+      border: var(--brutal-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800; font-size: 14px; color: var(--ink);
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 990px) {
       .hero { grid-template-columns: 1fr; }
-      .skills-wrapper { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .portrait-stage { min-height: 390px; }
+      .skills-container { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; }
+      .portrait-stage { min-height: 420px; }
     }
 
     @media (max-width: 640px) {
-      body { padding: 12px 12px 90px; }
+      .wrap { padding: 16px 12px 0; }
       header {
-        border-radius: 24px; flex-direction: column; padding: 14px; gap: 12px;
-        position: relative; top: 0; margin-bottom: 20px;
+        position: relative; top: 0; flex-direction: column;
+        padding: 14px; border-radius: 22px; margin-bottom: 24px;
       }
-      .nav { width: 100%; justify-content: center; flex-wrap: wrap; gap: 4px; }
-      .nav a { padding: 7px 12px; font-size: 12.5px; }
-      .card { padding: 22px 18px; border-radius: 24px; }
+      .nav { width: 100%; justify-content: center; gap: 4px; }
+      .nav a:not(.cta) { padding: 7px 11px; font-size: 12.5px; }
+      .card { padding: 24px 16px; border-radius: 22px; }
+      .window-bar { margin: -24px -16px 20px -16px; padding: 9px 14px; }
       .skills-grid { grid-template-columns: 1fr; }
-      .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .stat-num { font-size: 18px; }
+      .bento-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .bento-num { font-size: 19px; }
 
-      /* Sliding Bottom Sheet Modal on Mobile */
+      /* Mobile Sliding Bottom-Sheet Modal */
       .modal { align-items: flex-end; }
       .modal .modal-card {
         width: 100%; max-width: 100%; max-height: 90vh;
-        border-radius: 28px 28px 0 0; padding: 18px 18px 30px;
+        border-radius: 28px 28px 0 0;
+        border-bottom: none;
+        padding: 16px 16px 28px;
+        box-shadow: 0 -8px 0px var(--ink);
         transform: translateY(100%);
       }
       .modal.open .modal-card { transform: translateY(0); }
-      .sheet-pill { display: block; }
+      .sheet-handle { display: block; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Scroll Progress Indicator -->
-  <div class="scroll-progress" id="scroll-progress"></div>
+  <!-- Striped Top Scroll Progress Bar -->
+  <div class="scroll-bar-top" id="scroll-bar-top"></div>
 
-  <!-- Custom Cursor Halo -->
-  <div class="cursor-halo" id="cursor-halo"></div>
+  <!-- Custom Neo-Brutalist Cursor -->
+  <div class="neo-cursor" id="neo-cursor"></div>
 
-  <!-- Multi-Layered Interactive Pastel Background -->
-  <div class="aurora-mesh"></div>
-  <canvas id="InteractiveCanvas"></canvas>
+  <!-- Maximalist Aurora + Interactive Pastel Geometry & Confetti Canvas -->
+  <div class="aurora-maximal"></div>
+  <canvas id="MaximalCanvas"></canvas>
+
+  <!-- KINETIC INFINITE MARQUEE RIBBON -->
+  <div class="marquee-ribbon">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="marquee-star"></span> MOCHAMAD RIFKI RAMADHAN</div>
+      <div class="marquee-item"><span class="marquee-star"></span> S1 INFORMATIKA SEMESTER 6</div>
+      <div class="marquee-item"><span class="marquee-star"></span> FULLSTACK WEB DEVELOPER</div>
+      <div class="marquee-item"><span class="marquee-star"></span> DATA ENTRY & ANALYTICS</div>
+      <div class="marquee-item"><span class="marquee-star"></span> CREATIVE VIDEO EDITOR</div>
+      <div class="marquee-item"><span class="marquee-star"></span> GRABBIKE 5.0★ PARTNER</div>
+      <!-- Duplicate for Seamless Loop -->
+      <div class="marquee-item"><span class="marquee-star"></span> MOCHAMAD RIFKI RAMADHAN</div>
+      <div class="marquee-item"><span class="marquee-star"></span> S1 INFORMATIKA SEMESTER 6</div>
+      <div class="marquee-item"><span class="marquee-star"></span> FULLSTACK WEB DEVELOPER</div>
+      <div class="marquee-item"><span class="marquee-star"></span> DATA ENTRY & ANALYTICS</div>
+      <div class="marquee-item"><span class="marquee-star"></span> CREATIVE VIDEO EDITOR</div>
+      <div class="marquee-item"><span class="marquee-star"></span> GRABBIKE 5.0★ PARTNER</div>
+    </div>
+  </div>
 
   <div class="wrap">
-    <!-- HEADER -->
+    <!-- FLOATING NEO-GLASS HEADER -->
     <header id="main-header">
       <div class="brand" id="brand-trigger" title="Klik untuk melihat Kartu Profil">
-        <div class="logo-wrap">
+        <div class="logo-frame">
           <img class="logo" src="assets/profil.png" alt="Logo Profil" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80'">
         </div>
-        <div class="brand-text">
-          <h1>PORTOFOLIO</h1>
-          <div class="brand-badge">
-            <span class="status-dot"></span>
-            <span>Mahasiswa • Fullstack • Ojol</span>
+        <div>
+          <div class="brand-title">
+            <span>PORTOFOLIO</span>
+            <span class="live-pill"><span class="live-dot"></span> OPEN TO WORK</span>
           </div>
+          <div class="brand-sub">Mahasiswa • Fullstack • Ojol</div>
         </div>
       </div>
 
       <nav class="nav">
-        <a href="#about" class="active-link">Tentang</a>
+        <a href="#about">Tentang</a>
         <a href="#projects">Projects</a>
         <a href="#videos">Video</a>
         <a href="#certs">Sertifikat</a>
-        <a href="#contact" class="cta">Kontak</a>
+        <a href="#contact" class="cta magnetic-btn">Kontak ✦</a>
       </nav>
     </header>
 
     <!-- HERO SECTION -->
     <section id="about" class="hero">
       <div class="card intro tilt-card">
+        <div class="window-bar">
+          <div class="win-dots">
+            <span class="win-dot r"></span>
+            <span class="win-dot y"></span>
+            <span class="win-dot g"></span>
+          </div>
+          <span class="win-title">BIO_SYSTEM_V2.6.EXE</span>
+        </div>
         <div class="card-glare"></div>
 
-        <div class="role-pill-group fade-up">
-          <span class="role-pill">S1 Informatika • Sem 6</span>
-          <span class="role-pill pink">Fullstack & Data Enthusiast</span>
-          <span class="role-pill">GrabBike Partner</span>
+        <div class="badge-cluster fade-up">
+          <span class="neo-tag mint">✦ S1 Informatika Sem 6</span>
+          <span class="neo-tag pink">★ Fullstack & AI Builder</span>
+          <span class="neo-tag yellow">⚡ Disiplin & Adaptif</span>
         </div>
 
-        <h2 class="fade-up">Hai! Saya <span class="gradient-name">Mochamad Rifki Ramadhan</span></h2>
+        <h2 class="fade-up">
+          Hai! Saya <span class="highlight-box">Mochamad Rifki Ramadhan</span>
+        </h2>
 
-        <p class="fade-up" style="transition-delay:.08s;">
+        <p class="intro-bio fade-up" style="transition-delay:.08s;">
           Lulusan SMK Administrasi Perkantoran dengan pengalaman magang di BPBD Kabupaten Cianjur serta pengalaman kerja sebagai Staff Warung Bakso, driver GrabBike, dan Data Entry. Memiliki pengalaman dalam pelayanan pelanggan, pengelolaan pengiriman dan logistik, serta pengolahan data secara teliti dan terstruktur. Terbiasa bekerja dengan disiplin, memiliki kemampuan komunikasi dan organisasi yang baik, serta mampu beradaptasi di lingkungan kerja yang dinamis. Saat ini sedang menempuh pendidikan S1 Informatika Semester 6 untuk mengembangkan kompetensi di bidang teknologi. Siap bekerja secara teliti, cepat, dan adaptif.
         </p>
 
-        <!-- Dynamic Quick Counters -->
-        <div class="hero-stats fade-up" style="transition-delay:.12s">
-          <div class="stat-box">
-            <div class="stat-num">4+</div>
-            <div class="stat-label">Web & AI Projects</div>
+        <!-- Bento Quick Counters -->
+        <div class="bento-stats fade-up" style="transition-delay:.12s">
+          <div class="bento-stat">
+            <div class="bento-num">4+</div>
+            <div class="bento-lbl">Web & AI Apps</div>
           </div>
-          <div class="stat-box">
-            <div class="stat-num">6+</div>
-            <div class="stat-label">Video Productions</div>
+          <div class="bento-stat">
+            <div class="bento-num">6+</div>
+            <div class="bento-lbl">Video Edits</div>
           </div>
-          <div class="stat-box">
-            <div class="stat-num">17+</div>
-            <div class="stat-label">Sertifikasi Resmi</div>
+          <div class="bento-stat">
+            <div class="bento-num">17+</div>
+            <div class="bento-lbl">Sertifikat</div>
           </div>
         </div>
 
-        <!-- SKILLS BARS + SVG RADAR CHART -->
-        <div class="skills-wrapper fade-up" style="transition-delay:.18s">
+        <!-- SKILLS BARS + RADAR MATRIX -->
+        <div class="skills-container fade-up" style="transition-delay:.18s">
           <div class="skills-grid">
-            <div class="skill-item">
-              <div class="skill-head"><h4>HTML & CSS</h4><span class="skill-pct">95%</span></div>
+            <div class="skill-box">
+              <div class="skill-top"><h4>HTML & CSS</h4><span class="skill-badge">95%</span></div>
               <div class="bar"><i data-width="95%"></i></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-head"><h4>Microsoft Word</h4><span class="skill-pct">90%</span></div>
+            <div class="skill-box">
+              <div class="skill-top"><h4>Microsoft Word</h4><span class="skill-badge">90%</span></div>
               <div class="bar"><i data-width="90%"></i></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-head"><h4>Microsoft Excel</h4><span class="skill-pct">70%</span></div>
+            <div class="skill-box">
+              <div class="skill-top"><h4>Microsoft Excel</h4><span class="skill-badge">70%</span></div>
               <div class="bar"><i data-width="70%"></i></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-head"><h4>JavaScript</h4><span class="skill-pct">50%</span></div>
+            <div class="skill-box">
+              <div class="skill-top"><h4>JavaScript</h4><span class="skill-badge">50%</span></div>
               <div class="bar"><i data-width="50%"></i></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-head"><h4>Node.js</h4><span class="skill-pct">50%</span></div>
+            <div class="skill-box">
+              <div class="skill-top"><h4>Node.js</h4><span class="skill-badge">50%</span></div>
               <div class="bar"><i data-width="50%"></i></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-head"><h4>PHP</h4><span class="skill-pct">50%</span></div>
+            <div class="skill-box">
+              <div class="skill-top"><h4>PHP</h4><span class="skill-badge">50%</span></div>
               <div class="bar"><i data-width="50%"></i></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-head"><h4>Figma & UI/UX</h4><span class="skill-pct">50%</span></div>
+            <div class="skill-box">
+              <div class="skill-top"><h4>Figma</h4><span class="skill-badge">50%</span></div>
               <div class="bar"><i data-width="50%"></i></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-head"><h4>Adobe Illustrator</h4><span class="skill-pct">50%</span></div>
+            <div class="skill-box">
+              <div class="skill-top"><h4>Illustrator</h4><span class="skill-badge">50%</span></div>
               <div class="bar"><i data-width="50%"></i></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-head"><h4>After Effects</h4><span class="skill-pct">50%</span></div>
+            <div class="skill-box">
+              <div class="skill-top"><h4>After Effect</h4><span class="skill-badge">50%</span></div>
               <div class="bar"><i data-width="50%"></i></div>
             </div>
-            <div class="skill-item">
-              <div class="skill-head"><h4>Premiere Pro</h4><span class="skill-pct">50%</span></div>
+            <div class="skill-box">
+              <div class="skill-top"><h4>Premiere</h4><span class="skill-badge">50%</span></div>
               <div class="bar"><i data-width="50%"></i></div>
             </div>
           </div>
 
-          <!-- Interactive SVG Skill Radar -->
-          <div class="radar-box">
-            <div class="radar-title">Kompetensi Multidimensi</div>
-            <svg id="skill-radar" width="240" height="240" viewBox="0 0 240 240"></svg>
+          <div class="radar-panel">
+            <div class="radar-heading">Skill Radar Matrix</div>
+            <svg id="skill-radar" width="235" height="235" viewBox="0 0 240 240"></svg>
           </div>
         </div>
 
-        <div style="display:flex; gap:12px; margin-top:26px; flex-wrap:wrap; align-items:center;">
-          <a href="assets/CV_MochamadRifkiRamadhan.pdf" class="btn-primary" download>Unduh CV Resmi</a>
-          <button class="btn-secondary" id="btn-contact">Hubungi Saya</button>
+        <div style="display:flex; gap:14px; margin-top:24px; flex-wrap:wrap; align-items:center;">
+          <a href="assets/CV_MochamadRifkiRamadhan.pdf" class="btn-primary magnetic-btn" download>⬇ Unduh CV Resmi</a>
+          <button class="btn-secondary magnetic-btn" id="btn-contact">✉ Hubungi Saya</button>
         </div>
       </div>
 
-      <!-- HOLOGRAPHIC PORTRAIT STAGE -->
+      <!-- MAXIMALIST PORTRAIT STAGE -->
       <aside class="card portrait-stage tilt-card">
+        <div class="window-bar" style="width:calc(100% + 64px);">
+          <div class="win-dots">
+            <span class="win-dot r"></span>
+            <span class="win-dot y"></span>
+            <span class="win-dot g"></span>
+          </div>
+          <span class="win-title">DRIVER_STATS.PNG</span>
+        </div>
         <div class="card-glare"></div>
-        <div class="orbital-ring"></div>
-        <div class="orbital-ring-2"></div>
+
+        <!-- Rotating Starburst Sticker -->
+        <div class="starburst-sticker">
+          <svg class="starburst-svg" viewBox="0 0 100 100">
+            <path d="M50 2 L61 18 L79 9 L80 29 L98 33 L88 50 L98 67 L80 71 L79 91 L61 82 L50 98 L39 82 L21 91 L20 71 L2 67 L12 50 L2 33 L20 29 L21 9 L39 18 Z" fill="#ffef6e" stroke="#14141b" stroke-width="3.5"/>
+          </svg>
+          <div class="starburst-text">TOP<br>RATED<br>★ 5.0</div>
+        </div>
+
         <div class="bg-shape"></div>
 
         <div class="portrait-photo">
-          <img src="assets/grab.jpg" alt="Foto Profil Mochamad Rifki Ramadhan" onerror="this.src='https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop&q=80'">
+          <img src="assets/grab.jpg" alt="Foto Profil" onerror="this.src='https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop&q=80'">
         </div>
 
-        <div class="floating-badge float-1">Rating saya selama menjadi GrabBike Driver</div>
-        <div class="floating-badge float-3">5.0 ★ Pelayanan Prima</div>
-        <div class="floating-badge float-2">dari 2021 - sekarang</div>
+        <div class="floating-sticker float-1">★ Rating saya selama menjadi GrabBike Driver</div>
+        <div class="floating-sticker float-3">⚡ Disiplin • Tepat Waktu</div>
+        <div class="floating-sticker float-2">✦ dari 2021 - sekarang</div>
       </aside>
     </section>
 
     <!-- PROJECTS SECTION -->
     <section id="projects" class="card fade-up">
-      <div class="section-head">
-        <div>
-          <h3>Projects <span class="section-badge">4 Karya</span></h3>
-          <p class="muted">Semua proyek portofolio aplikasi & sistem cerdas yang pernah saya bangun.</p>
+      <div class="window-bar">
+        <div class="win-dots">
+          <span class="win-dot r"></span>
+          <span class="win-dot y"></span>
+          <span class="win-dot g"></span>
         </div>
-        <div class="filter-tabs" id="project-filters">
-          <button class="filter-btn active" data-filter="all">Semua</button>
-          <button class="filter-btn" data-filter="ai">AI & Node.js</button>
-          <button class="filter-btn" data-filter="php">PHP & Web App</button>
+        <span class="win-title">PORTFOLIO_PROJECTS // 04 ITEMS</span>
+      </div>
+
+      <div class="sec-header">
+        <div>
+          <div class="sec-title-wrap">
+            <h3>Projects</h3>
+            <span class="count-pill">4 Aplikasi Pilihan</span>
+          </div>
+          <p class="muted">Semua proyek portofolio yang pernah saya buat - klik kartu untuk melihat detail & tangkap layar.</p>
+        </div>
+
+        <div class="filter-group" id="project-filters">
+          <button class="filter-chip active" data-filter="all">Semua (4)</button>
+          <button class="filter-chip" data-filter="ai">AI & Node.js</button>
+          <button class="filter-chip" data-filter="php">PHP & Sistem Web</button>
         </div>
       </div>
 
       <div class="projects-grid" id="projects-grid">
-        <div class="project-card tilt-card" data-category="ai" data-title="Sistem Cerdas — PLANT AI" data-desc="Sistem cerdas berbasis Computer Vision dan Machine Learning untuk klasifikasi, identifikasi penyakit, serta konsultasi interaktif terkait tanaman secara real-time." data-tech="HTML, CSS, JS, Node.js, TensorFlow, XGBoost" data-img1="assets/ai.png" data-img2="assets/ai2.png" data-img3="assets/ai3.png">
+        <div class="project-card tilt-card" data-category="ai" data-title="Sistem Cerdas" data-desc="Sistem cerdas untuk klasifikasi, indentifikasi, konsultasi terkait tanaman" data-tech="HTML, CSS, JS, Node.js, TensorFlow" data-img1="assets/ai.png" data-img2="assets/ai2.png" data-img3="assets/ai3.png">
           <div class="card-glare"></div>
           <div>
             <div class="project-thumb">
+              <span class="card-corner-badge">AI VISION</span>
               <img src="assets/ai.png" alt="PLANT AI" onerror="this.src='https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=600&auto=format&fit=crop&q=80'">
             </div>
             <h4>PLANT AI</h4>
-            <p class="project-sub">Sistem cerdas klasifikasi, identifikasi & konsultasi tanaman berbasis AI.</p>
+            <p class="project-desc-short">Sistem cerdas untuk klasifikasi, identifikasi, dan konsultasi terkait tanaman.</p>
           </div>
           <div class="tags">
             <div class="tag">Tailwind</div>
@@ -843,14 +1127,15 @@
           </div>
         </div>
 
-        <div class="project-card tilt-card" data-category="php" data-title="E-Commerce — SAMOEDRA" data-desc="Platform E-commerce terpadu yang menyediakan layanan dan produk kurasi untuk mendukung tumbuh kembang anak secara optimal." data-tech="HTML, CSS, JS, Bootstrap, PHP" data-img1="assets/samoedra1.jpg" data-img2="assets/samoedra2.jpg">
+        <div class="project-card tilt-card" data-category="php" data-title="E-commerce" data-desc="E-commerce yang menyediakan jasa untuk tumbuh kembang anak" data-tech="HTML, CSS, JS, PHP" data-img1="assets/samoedra1.jpg" data-img2="assets/samoedra2.jpg">
           <div class="card-glare"></div>
           <div>
             <div class="project-thumb">
+              <span class="card-corner-badge">E-COMMERCE</span>
               <img src="assets/samoedra1.jpg" alt="SAMOEDRA" onerror="this.src='https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&auto=format&fit=crop&q=80'">
             </div>
             <h4>SAMOEDRA</h4>
-            <p class="project-sub">E-commerce yang menyediakan jasa dan produk tumbuh kembang anak.</p>
+            <p class="project-desc-short">E-commerce yang menyediakan jasa untuk tumbuh kembang anak.</p>
           </div>
           <div class="tags">
             <div class="tag">Bootstrap</div>
@@ -858,14 +1143,15 @@
           </div>
         </div>
 
-        <div class="project-card tilt-card" data-category="php" data-title="Sistem Informasi — SIPADI" data-desc="Sistem Informasi Pengarsipan Digital: platform pengelolaan arsip dalam bentuk data elektronik yang memberikan efisiensi dan keamanan penyimpanan arsip, serta mempermudah dalam mencari informasi." data-tech="HTML, CSS, JS, Bootstrap, PHP" data-img1="assets/sipadi2.jpg" data-img2="assets/sipadi1.jpg">
+        <div class="project-card tilt-card" data-category="php" data-title="Sistem Informasi" data-desc="Sistem informasi Pengarsipan Digital platform pengelolaan arsip dalam bentuk data elektronik yang memberikan efisiensi dan keamanan penyimpanan arsip, serta mempermudah dalam mencari informasi" data-tech="HTML, CSS, JS, PHP" data-img1="assets/sipadi2.jpg" data-img2="assets/sipadi1.jpg">
           <div class="card-glare"></div>
           <div>
             <div class="project-thumb">
+              <span class="card-corner-badge">E-ARCHIVE</span>
               <img src="assets/sipadi2.jpg" alt="SIPADI" onerror="this.src='https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&auto=format&fit=crop&q=80'">
             </div>
             <h4>SIPADI</h4>
-            <p class="project-sub">Platform pengelolaan arsip elektronik yang aman, terstruktur, dan cepat.</p>
+            <p class="project-desc-short">Sistem informasi Pengarsipan Digital elektronik yang aman dan efisien.</p>
           </div>
           <div class="tags">
             <div class="tag">Bootstrap</div>
@@ -873,14 +1159,15 @@
           </div>
         </div>
 
-        <div class="project-card tilt-card" data-category="php" data-title="Sistem Kasir — KASIR ALMEERA" data-desc="Aplikasi Point of Sales (Kasir) yang memudahkan transaksi pembayaran cepat serta manajemen inventori stok barang secara otomatis." data-tech="HTML, CSS, JS, Tailwind, PHP" data-img1="assets/kasir1.png" data-img2="assets/kasir2.png" data-img3="assets/kasir3.png">
+        <div class="project-card tilt-card" data-category="php" data-title="Sistem Kasir" data-desc="Aplikasi kasir yang memudahkan pembayaran serta memanage stok barang" data-tech="HTML, CSS, JS, PHP" data-img1="assets/kasir1.png" data-img2="assets/kasir2.png" data-img3="assets/kasir3.png">
           <div class="card-glare"></div>
           <div>
             <div class="project-thumb">
+              <span class="card-corner-badge">POS SYSTEM</span>
               <img src="assets/kasir1.png" alt="KASIR ALMEERA" onerror="this.src='https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&auto=format&fit=crop&q=80'">
             </div>
             <h4>KASIR ALMEERA</h4>
-            <p class="project-sub">Aplikasi kasir modern untuk transaksi pembayaran dan manajemen stok.</p>
+            <p class="project-desc-short">Aplikasi kasir yang memudahkan pembayaran serta manajemen stok barang.</p>
           </div>
           <div class="tags">
             <div class="tag">Tailwind</div>
@@ -891,11 +1178,23 @@
     </section>
 
     <!-- VIDEOS SECTION -->
-    <section id="videos" class="card fade-up" style="margin-top:28px">
-      <div class="section-head">
+    <section id="videos" class="card fade-up" style="margin-top:32px">
+      <div class="window-bar">
+        <div class="win-dots">
+          <span class="win-dot r"></span>
+          <span class="win-dot y"></span>
+          <span class="win-dot g"></span>
+        </div>
+        <span class="win-title">VIDEO_PRODUCTION_REEL // 06 ITEMS</span>
+      </div>
+
+      <div class="sec-header">
         <div>
-          <h3>Video Editing <span class="section-badge">6 Karya</span></h3>
-          <p class="muted">Kumpulan karya produksi visual, motion graphics, dan video promosi yang telah saya edit.</p>
+          <div class="sec-title-wrap">
+            <h3>Video Editing</h3>
+            <span class="count-pill" style="background:var(--pastel-mint);">6 Karya Visual</span>
+          </div>
+          <p class="muted">Kumpulan karya video yang telah saya edit - klik kartu untuk memutar video langsung di layar.</p>
         </div>
       </div>
 
@@ -904,8 +1203,8 @@
           <div class="card-glare"></div>
           <div>
             <div class="project-thumb">
-              <img src="assets/vid4.png" alt="Video Tugas Bahasa Inggris" onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&auto=format&fit=crop&q=80'">
-              <div class="play-orb">▶</div>
+              <img src="assets/vid4.png" alt="Video 4" onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&auto=format&fit=crop&q=80'">
+              <div class="play-neo">▶</div>
             </div>
             <h4>Video Tugas Bahasa Inggris</h4>
           </div>
@@ -916,8 +1215,8 @@
           <div class="card-glare"></div>
           <div>
             <div class="project-thumb">
-              <img src="assets/vid5.png" alt="ANGGA.EXE" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&auto=format&fit=crop&q=80'">
-              <div class="play-orb">▶</div>
+              <img src="assets/vid5.png" alt="Video 5" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&auto=format&fit=crop&q=80'">
+              <div class="play-neo">▶</div>
             </div>
             <h4>ANGGA.EXE</h4>
           </div>
@@ -928,8 +1227,8 @@
           <div class="card-glare"></div>
           <div>
             <div class="project-thumb">
-              <img src="assets/vid6.png" alt="ONE IN A MILLION" onerror="this.src='https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&auto=format&fit=crop&q=80'">
-              <div class="play-orb">▶</div>
+              <img src="assets/vid6.png" alt="Video 6" onerror="this.src='https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&auto=format&fit=crop&q=80'">
+              <div class="play-neo">▶</div>
             </div>
             <h4>ONE IN A MILLION</h4>
           </div>
@@ -940,8 +1239,8 @@
           <div class="card-glare"></div>
           <div>
             <div class="project-thumb">
-              <img src="assets/vid1.png" alt="Video Promosi 1" onerror="this.src='https://images.unsplash.com/photo-1551817958-d9d86fb29431?w=600&auto=format&fit=crop&q=80'">
-              <div class="play-orb">▶</div>
+              <img src="assets/vid1.png" alt="Video 1" onerror="this.src='https://images.unsplash.com/photo-1551817958-d9d86fb29431?w=600&auto=format&fit=crop&q=80'">
+              <div class="play-neo">▶</div>
             </div>
             <h4>Video Promosi</h4>
           </div>
@@ -952,8 +1251,8 @@
           <div class="card-glare"></div>
           <div>
             <div class="project-thumb">
-              <img src="assets/vid2.png" alt="Video Promosi 2" onerror="this.src='https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?w=600&auto=format&fit=crop&q=80'">
-              <div class="play-orb">▶</div>
+              <img src="assets/vid2.png" alt="Video 2" onerror="this.src='https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?w=600&auto=format&fit=crop&q=80'">
+              <div class="play-neo">▶</div>
             </div>
             <h4>Video Promosi</h4>
           </div>
@@ -964,8 +1263,8 @@
           <div class="card-glare"></div>
           <div>
             <div class="project-thumb">
-              <img src="assets/vid3.png" alt="Video Promosi 3" onerror="this.src='https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop&q=80'">
-              <div class="play-orb">▶</div>
+              <img src="assets/vid3.png" alt="Video 3" onerror="this.src='https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop&q=80'">
+              <div class="play-neo">▶</div>
             </div>
             <h4>Video Promosi</h4>
           </div>
@@ -975,191 +1274,218 @@
     </section>
 
     <!-- CERTIFICATES SECTION -->
-    <section id="certs" class="card fade-up" style="margin-top:28px">
-      <div class="section-head">
-        <div>
-          <h3>Sertifikat & Lisensi <span class="section-badge">17 Sertifikat</span></h3>
-          <p class="muted">Geser atau klik pada kartu sertifikat untuk membuka dokumen asli.</p>
+    <section id="certs" class="card fade-up" style="margin-top:32px">
+      <div class="window-bar">
+        <div class="win-dots">
+          <span class="win-dot r"></span>
+          <span class="win-dot y"></span>
+          <span class="win-dot g"></span>
         </div>
-        <div class="cert-controls">
-          <button class="carousel-btn" id="cert-prev" aria-label="Sebelumnya">←</button>
-          <button class="carousel-btn" id="cert-next" aria-label="Selanjutnya">→</button>
+        <span class="win-title">VERIFIED_CERTIFICATES // 17 CREDENTIALS</span>
+      </div>
+
+      <div class="sec-header">
+        <div>
+          <div class="sec-title-wrap">
+            <h3>Sertifikat</h3>
+            <span class="count-pill" style="background:var(--pastel-yellow);">17 Lisensi</span>
+          </div>
+          <p class="muted">Sertifikat kompetensi dan training yang sudah saya peroleh - tarik atau klik untuk membuka PDF.</p>
+        </div>
+
+        <div class="carousel-nav">
+          <button class="nav-circle" id="cert-prev" aria-label="Geser Kiri">←</button>
+          <button class="nav-circle" id="cert-next" aria-label="Geser Kanan">→</button>
         </div>
       </div>
 
       <div class="certs" id="certs-list">
         <div class="cert" data-cover="assets/sertifikat_course_899_3445248_160226095727.jpg" data-file="assets/sertifikat_course_899_3445248_160226095727.pdf">
           <strong>Dicoding</strong>
-          <div class="muted">Gen AI with Microsoft Azure — 2026</div>
+          <div class="muted">Gen AI with Microsoft Azure - 2026</div>
         </div>
 
         <div class="cert" data-cover="assets/sertifikat_course_902_3445248_160226095556.jpg" data-file="assets/sertifikat_course_902_3445248_160226095556.pdf">
           <strong>Dicoding</strong>
-          <div class="muted">Data Science with Microsoft Fabric — 2026</div>
+          <div class="muted">Data Science with Microsoft Fabric - 2026</div>
         </div>
 
         <div class="cert" data-cover="assets/sertifikat_course_169_3445248_270126222542.jpg" data-file="assets/sertifikat_course_169_3445248_270126222542.pdf">
           <strong>Dicoding</strong>
-          <div class="muted">Prinsip Pemrograman SOLID — 2026</div>
+          <div class="muted">Prinsip Pemrograman SOLID - 2026</div>
         </div>
 
         <div class="cert" data-cover="assets/sertifikat_course_570_3445248_270126205145.jpg" data-file="assets/sertifikat_course_570_3445248_270126205145.pdf">
           <strong>Dicoding</strong>
-          <div class="muted">Manajemen Proyek — 2026</div>
+          <div class="muted">Manajemen Proyek - 2026</div>
         </div>
 
         <div class="cert" data-cover="assets/sertifikat_course_905_3445248_030226094052.jpg" data-file="assets/sertifikat_course_905_3445248_030226094052.pdf">
           <strong>Dicoding</strong>
-          <div class="muted">Financial Literacy — 2026</div>
+          <div class="muted">Financial Literacy - 2026</div>
         </div>
 
         <div class="cert" data-cover="assets/revou.jpg" data-file="assets/mochamad-rifki-ramadhan-certificate-completion-damc-1.pdf">
           <strong>RevoU</strong>
-          <div class="muted">Data Analytics — 2024</div>
+          <div class="muted">Data Analytics - 2024</div>
         </div>
 
         <div class="cert" data-cover="assets/kinter.jpg" data-file="assets/4177b82ba987923466bbb83cfdcd5f9f3eb15b61419a8d217bcb3c95cb824286b5daa832ee42024e2427373c81699c9c812e5f4401...c0409c85d7d9536359cb23dbf32010eaa1e868c418cfe77397ef9ff37f68ddc3ddbf9d2990d97615a975ee50850fc694d7f48f111d.pdf">
           <strong>GCFGlobal</strong>
-          <div class="muted">Keamanan Internet — 2024</div>
+          <div class="muted">Keamanan Internet - 2024</div>
         </div>
 
         <div class="cert" data-cover="assets/kinter1.jpg" data-file="assets/445b60780b029ea177c9a6a56ea038f84a40a9b173764c5c2a48ccde03a361a95f586d271f24ca640ebf3706d5aa1f901dfe35a13e...853bcc9ee4ef76fd6d05d78847ff42add84a7fe97fcda1531b873c38afa6c7e406791ae289dc7ca6ab0f0a2b57ab0dedb22b72258c.pdf">
           <strong>GCFGlobal</strong>
-          <div class="muted">Keamanan Internet Untuk Anak — 2024</div>
+          <div class="muted">Keamanan Internet Untuk Anak - 2024</div>
         </div>
 
         <div class="cert" data-cover="assets/back.jpg" data-file="assets/sertifikat_course_261_3445248_201223055408.pdf">
           <strong>Dicoding</strong>
-          <div class="muted">Backend — 2023</div>
+          <div class="muted">Backend - 2023</div>
         </div>
 
         <div class="cert" data-cover="assets/js.jpg" data-file="assets/sertifikat_course_256_3445248_181223000400.pdf">
           <strong>Dicoding</strong>
-          <div class="muted">JavaScript — 2023</div>
+          <div class="muted">JavaScript - 2023</div>
         </div>
 
         <div class="cert" data-cover="assets/aws.jpg" data-file="assets/sertifikat_course_251_3445248_201223170404.pdf">
           <strong>Dicoding</strong>
-          <div class="muted">Cloud AWS — 2023</div>
+          <div class="muted">Cloud AWS - 2023</div>
         </div>
 
         <div class="cert" data-cover="assets/certificate-DQLABINTP1OPASGT.jpg" data-file="assets/certificate-DQLABINTP1OPASGT.pdf">
           <strong>DQLab</strong>
-          <div class="muted">Data Science with Python — 2023</div>
+          <div class="muted">Data Science with Python - 2023</div>
         </div>
 
         <div class="cert" data-cover="assets/certificate-DQLABINTP1TJVMRN.jpg" data-file="assets/certificate-DQLABINTP1TJVMRN.pdf">
           <strong>DQLab</strong>
-          <div class="muted">Python for Data Professional — 2023</div>
+          <div class="muted">Python for Data Professional - 2023</div>
         </div>
 
         <div class="cert" data-cover="assets/certificate-DQLABAI001UHHQWT.jpg" data-file="assets/certificate-DQLABAI001UHHQWT.pdf">
           <strong>DQLab</strong>
-          <div class="muted">Learn Python with AI — 2023</div>
+          <div class="muted">Learn Python with AI - 2023</div>
         </div>
 
         <div class="cert" data-cover="assets/certificate-DQLABAI003DICDQO.jpg" data-file="assets/certificate-DQLABAI003DICDQO.pdf">
           <strong>DQLab</strong>
-          <div class="muted">Learn SQL with AI — 2023</div>
+          <div class="muted">Learn SQL with AI - 2023</div>
         </div>
 
         <div class="cert" data-cover="assets/ujikom.jpg" data-file="assets/ujikom.pdf">
           <strong>Ikatan Sekretaris Indonesia</strong>
-          <div class="muted">Sertifikat Kompetensi — 2018</div>
+          <div class="muted">Sertifikat Kompetensi - 2018</div>
         </div>
 
         <div class="cert" data-cover="assets/kesiapan.jpg" data-file="assets/kesiapan.pdf">
           <strong>SMK AN-NAHL</strong>
-          <div class="muted">Pelatihan Kesiapan Kerja — 2018</div>
+          <div class="muted">Pelatihan Kesiapan Kerja - 2018</div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" class="card fade-up" style="margin-top:28px">
-      <div class="section-head">
+    <section id="contact" class="card fade-up" style="margin-top:32px">
+      <div class="window-bar">
+        <div class="win-dots">
+          <span class="win-dot r"></span>
+          <span class="win-dot y"></span>
+          <span class="win-dot g"></span>
+        </div>
+        <span class="win-title">DIRECT_MESSAGE_CHANNEL</span>
+      </div>
+
+      <div class="sec-header">
         <div>
           <h3>Hubungi Saya</h3>
-          <p class="muted">Terbuka untuk kolaborasi proyek, peluang kerja Fullstack/Data Entry, maupun diskusi teknologi.</p>
+          <p class="muted">Siap berkolaborasi untuk proyek Web, Data Entry, maupun produksi kreatif.</p>
         </div>
       </div>
 
-      <div class="contact-grid">
-        <div class="contact-info-box">
+      <div class="contact-layout">
+        <div class="contact-card-left">
           <div>
-            <h4 style="font-size: 20px; margin-bottom: 8px;">Mari Terhubung!</h4>
-            <p class="muted">Kirimkan pesan langsung melalui formulir atau hubungi kontak langsung di bawah ini.</p>
+            <span class="neo-tag yellow" style="margin-bottom:12px;">✦ FAST RESPONSE</span>
+            <h4 style="font-family:'Syne',sans-serif; font-size:22px; margin-bottom:8px;">Mari Berkolaborasi!</h4>
+            <p style="font-size:14px; font-weight:600; color:var(--ink);">
+              Silakan kirim pesan melalui form atau hubungi kontak langsung di bawah ini.
+            </p>
 
-            <div class="contact-mini-card">
-              <div style="font-weight:800; font-size:13px; color:var(--accent-dark);">EMAIL</div>
-              <div style="font-size:13.5px; font-weight:700; word-break:break-all;">mrifkiri@gmail.com</div>
+            <div class="contact-pill-item">
+              <span style="font-weight:800; font-size:12px; background:var(--pastel-mint); padding:3px 8px; border-radius:6px; border:1.5px solid var(--ink);">EMAIL</span>
+              <span style="font-weight:800; font-size:13.5px; word-break:break-all;">mrifkiri@gmail.com</span>
             </div>
-            <div class="contact-mini-card">
-              <div style="font-weight:800; font-size:13px; color:var(--accent-pink-dark);">WHATSAPP</div>
-              <div style="font-size:13.5px; font-weight:700;">+62 812-8607-0572</div>
+
+            <div class="contact-pill-item">
+              <span style="font-weight:800; font-size:12px; background:var(--pastel-pink); padding:3px 8px; border-radius:6px; border:1.5px solid var(--ink);">WA</span>
+              <span style="font-weight:800; font-size:13.5px;">+62 812-8607-0572</span>
             </div>
           </div>
 
-          <div style="margin-top: 20px;">
-            <button class="btn-secondary" type="button" style="width:100%" id="copy-email-btn">Salin Alamat Email</button>
-          </div>
+          <button class="btn-secondary magnetic-btn" type="button" id="copy-email-btn" style="width:100%; margin-top:18px;">
+            📋 Salin Alamat Email
+          </button>
         </div>
 
         <form class="contact" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="7a2ba0a2-50da-4141-a3ce-a1a331ed05ce">
-          <input type="text" name="name" placeholder="Nama Lengkap Anda" required />
-          <input type="email" name="email" placeholder="Alamat Email Aktif" required />
-          <textarea name="message" rows="4" placeholder="Tulis pesan atau tawaran kolaborasi..." required></textarea>
+          <input type="text" name="name" placeholder="Nama Lengkap" required />
+          <input type="email" name="email" placeholder="Alamat Email" required />
+          <textarea name="message" rows="4" placeholder="Pesan singkat" required></textarea>
           <input type="hidden" name="redirect" value="https://web3forms.com/success">
 
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <button class="btn-primary" type="submit">Kirim Pesan Sekarang</button>
-            <button class="btn-secondary" type="button" onclick="window.open('mailto:mrifkiri@gmail.com')">Buka Aplikasi Email</button>
+            <button class="btn-primary magnetic-btn" type="submit">🚀 Kirim Pesan</button>
+            <button class="btn-secondary magnetic-btn" type="button" onclick="window.open('mailto:mrifkiri@gmail.com')">✉ Buka Email</button>
           </div>
         </form>
       </div>
     </section>
 
-    <!-- FLOATING WHATSAPP -->
+    <!-- WHATSAPP FLOATING ORB -->
     <a href="https://wa.me/6281286070572" target="_blank" class="wa-float" aria-label="Chat via WhatsApp">
-      <img src="assets/wa.png" alt="WhatsApp" onerror="this.outerHTML='<span style=\'color:white;font-weight:800;font-size:14px\'>WA</span>'" />
+      <img src="assets/wa.png" alt="WhatsApp" onerror="this.outerHTML='<span style=\'color:#14141b;font-weight:900;font-size:15px\'>WA</span>'" />
     </a>
 
     <footer>
-      <small>© <span id="year"></span> Mochamad Rifki Ramadhan — Crafted with Hyper-Pastel Glass Architecture</small>
+      <small>© <span id="year"></span> Mochamad Rifki Ramadhan - Maximalist × Glassmorphism × Neo-Brutalism Edition</small>
     </footer>
 
     <!-- UNIVERSAL MODAL / MOBILE BOTTOM-SHEET -->
     <div id="modal" class="modal" aria-hidden="true">
       <div class="modal-card" id="modal-card">
-        <div class="sheet-pill"></div>
+        <div class="sheet-handle"></div>
         <button id="close" class="btn-close" aria-label="Tutup">✕</button>
         <div id="modal-body"></div>
       </div>
     </div>
 
-    <!-- TOAST NOTIFICATION -->
-    <div class="toast-box" id="toast-box">Email berhasil disalin!</div>
+    <!-- TOAST -->
+    <div class="neo-toast" id="neo-toast">✦ Alamat Email berhasil disalin!</div>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
 
       /* ========================================================================
-         1. INTERACTIVE PASTEL PARTICLE CONSTELLATION ENGINE (CANVAS)
+         1. MAXIMALIST GEOMETRIC SHAPES + CLICK CONFETTI ENGINE (HTML5 CANVAS)
          ======================================================================== */
-      const canvas = document.getElementById('InteractiveCanvas');
+      const canvas = document.getElementById('MaximalCanvas');
       if (canvas) {
         const ctx = canvas.getContext('2d');
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
-        let particles = [];
-        const pastelPalette = ['#84e6e0', '#ffb8d9', '#c9b8ff', '#ffd2b8', '#a3d8ff'];
+        let w = canvas.width = window.innerWidth;
+        let h = canvas.height = window.innerHeight;
+        const palette = ['#7ef4e6', '#ff9ce3', '#ffef6e', '#c5a8ff', '#ffb685', '#8fd3ff', '#b8ff7c'];
+        const shapes = [];
+        const bursts = [];
         const mouse = { x: -1000, y: -1000 };
 
         window.addEventListener('resize', () => {
-          width = canvas.width = window.innerWidth;
-          height = canvas.height = window.innerHeight;
+          w = canvas.width = window.innerWidth;
+          h = canvas.height = window.innerHeight;
         });
 
         window.addEventListener('mousemove', (e) => {
@@ -1167,177 +1493,249 @@
           mouse.y = e.clientY;
         });
 
-        const count = window.innerWidth < 640 ? 28 : 55;
+        // Click anywhere to trigger Neo-Brutalist Pastel Confetti Burst
+        window.addEventListener('click', (e) => {
+          for (let i = 0; i < 14; i++) {
+            const angle = (Math.PI * 2 * i) / 14 + (Math.random() - 0.5) * 0.4;
+            const speed = Math.random() * 6 + 2.5;
+            bursts.push({
+              x: e.clientX,
+              y: e.clientY,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed - 1.5,
+              size: Math.random() * 8 + 5,
+              rot: Math.random() * Math.PI,
+              vRot: (Math.random() - 0.5) * 0.2,
+              color: palette[Math.floor(Math.random() * palette.length)],
+              alpha: 1
+            });
+          }
+        });
+
+        const shapeTypes = ['circle', 'square', 'cross', 'star'];
+        const count = window.innerWidth < 640 ? 18 : 34;
         for (let i = 0; i < count; i++) {
-          particles.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.65,
-            vy: (Math.random() - 0.5) * 0.65,
-            r: Math.random() * 4 + 2,
-            color: pastelPalette[i % pastelPalette.length]
+          shapes.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.55,
+            vy: (Math.random() - 0.5) * 0.55,
+            size: Math.random() * 12 + 8,
+            rot: Math.random() * Math.PI * 2,
+            vRot: (Math.random() - 0.5) * 0.015,
+            type: shapeTypes[i % shapeTypes.length],
+            color: palette[i % palette.length]
           });
         }
 
-        function animateCanvas() {
-          ctx.clearRect(0, 0, width, height);
-          for (let i = 0; i < particles.length; i++) {
-            const p = particles[i];
-            p.x += p.vx;
-            p.y += p.vy;
+        function drawShape(s) {
+          ctx.save();
+          ctx.translate(s.x, s.y);
+          ctx.rotate(s.rot);
+          ctx.fillStyle = s.color;
+          ctx.strokeStyle = '#14141b';
+          ctx.lineWidth = 2;
 
-            if (p.x < 0 || p.x > width) p.vx *= -1;
-            if (p.y < 0 || p.y > height) p.vy *= -1;
-
-            // Gentle repulsion/attraction to cursor
-            const dx = mouse.x - p.x;
-            const dy = mouse.y - p.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 140) {
-              p.x -= dx * 0.008;
-              p.y -= dy * 0.008;
-            }
-
+          if (s.type === 'circle') {
             ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = p.color;
+            ctx.arc(0, 0, s.size * 0.55, 0, Math.PI * 2);
             ctx.fill();
-
-            // Connect nearby particles with pastel threads
-            for (let j = i + 1; j < particles.length; j++) {
-              const p2 = particles[j];
-              const d = Math.hypot(p.x - p2.x, p.y - p2.y);
-              if (d < 135) {
-                ctx.beginPath();
-                ctx.moveTo(p.x, p.y);
-                ctx.lineTo(p2.x, p2.y);
-                ctx.strokeStyle = `rgba(170, 185, 225, ${0.28 * (1 - d / 135)})`;
-                ctx.lineWidth = 1;
-                ctx.stroke();
-              }
+            ctx.stroke();
+          } else if (s.type === 'square') {
+            ctx.fillRect(-s.size / 2, -s.size / 2, s.size, s.size);
+            ctx.strokeRect(-s.size / 2, -s.size / 2, s.size, s.size);
+          } else if (s.type === 'cross') {
+            const t = s.size * 0.32;
+            ctx.beginPath();
+            ctx.rect(-s.size / 2, -t / 2, s.size, t);
+            ctx.rect(-t / 2, -s.size / 2, t, s.size);
+            ctx.fill();
+            ctx.stroke();
+          } else if (s.type === 'star') {
+            ctx.beginPath();
+            for (let i = 0; i < 8; i++) {
+              const r = i % 2 === 0 ? s.size * 0.7 : s.size * 0.3;
+              const a = (i * Math.PI) / 4;
+              if (i === 0) ctx.moveTo(Math.cos(a) * r, Math.sin(a) * r);
+              else ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r);
             }
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
           }
-          requestAnimationFrame(animateCanvas);
+          ctx.restore();
         }
-        animateCanvas();
+
+        function renderLoop() {
+          ctx.clearRect(0, 0, w, h);
+
+          // Render Floating Geometric Shapes
+          for (let i = 0; i < shapes.length; i++) {
+            const s = shapes[i];
+            s.x += s.vx;
+            s.y += s.vy;
+            s.rot += s.vRot;
+
+            if (s.x < -30) s.x = w + 30;
+            if (s.x > w + 30) s.x = -30;
+            if (s.y < -30) s.y = h + 30;
+            if (s.y > h + 30) s.y = -30;
+
+            const dx = mouse.x - s.x;
+            const dy = mouse.y - s.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < 130) {
+              s.x -= (dx / dist) * 1.4;
+              s.y -= (dy / dist) * 1.4;
+            }
+            ctx.globalAlpha = 0.7;
+            drawShape(s);
+          }
+
+          // Render Click Burst Confetti
+          for (let i = bursts.length - 1; i >= 0; i--) {
+            const b = bursts[i];
+            b.x += b.vx;
+            b.y += b.vy;
+            b.vy += 0.22; // gravity
+            b.rot += b.vRot;
+            b.alpha -= 0.024;
+
+            if (b.alpha <= 0) {
+              bursts.splice(i, 1);
+              continue;
+            }
+            ctx.save();
+            ctx.globalAlpha = b.alpha;
+            ctx.translate(b.x, b.y);
+            ctx.rotate(b.rot);
+            ctx.fillStyle = b.color;
+            ctx.strokeStyle = '#14141b';
+            ctx.lineWidth = 2;
+            ctx.fillRect(-b.size / 2, -b.size / 2, b.size, b.size);
+            ctx.strokeRect(-b.size / 2, -b.size / 2, b.size, b.size);
+            ctx.restore();
+          }
+
+          requestAnimationFrame(renderLoop);
+        }
+        renderLoop();
       }
 
       /* ========================================================================
-         2. CUSTOM CURSOR HALO & SCROLL PROGRESS
+         2. CUSTOM CURSOR, MAGNETIC BUTTONS & SCROLL PROGRESS
          ======================================================================== */
-      const cursorHalo = document.getElementById('cursor-halo');
-      const scrollProgress = document.getElementById('scroll-progress');
+      const neoCursor = document.getElementById('neo-cursor');
+      const scrollBarTop = document.getElementById('scroll-bar-top');
       const headerEl = document.getElementById('main-header');
 
       window.addEventListener('mousemove', (e) => {
-        if (cursorHalo) {
-          cursorHalo.style.left = `${e.clientX}px`;
-          cursorHalo.style.top = `${e.clientY}px`;
+        if (neoCursor) {
+          neoCursor.style.left = `${e.clientX}px`;
+          neoCursor.style.top = `${e.clientY}px`;
         }
       });
 
       document.querySelectorAll('a, button, .project-card, .cert, .brand').forEach(el => {
-        el.addEventListener('mouseenter', () => cursorHalo && cursorHalo.classList.add('active'));
-        el.addEventListener('mouseleave', () => cursorHalo && cursorHalo.classList.remove('active'));
+        el.addEventListener('mouseenter', () => neoCursor && neoCursor.classList.add('hovered'));
+        el.addEventListener('mouseleave', () => neoCursor && neoCursor.classList.remove('hovered'));
+      });
+
+      // Magnetic Pull on Primary Buttons
+      document.querySelectorAll('.magnetic-btn').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          if (window.innerWidth < 768) return;
+          const r = btn.getBoundingClientRect();
+          const dx = (e.clientX - (r.left + r.width / 2)) * 0.22;
+          const dy = (e.clientY - (r.top + r.height / 2)) * 0.22;
+          btn.style.transform = `translate(${dx}px, ${dy}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transform = '';
+        });
       });
 
       window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        if (scrollProgress) scrollProgress.style.width = `${pct}%`;
-        if (headerEl) headerEl.classList.toggle('scrolled', scrollTop > 30);
+        const st = window.scrollY;
+        const dh = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollBarTop) scrollBarTop.style.width = `${dh > 0 ? (st / dh) * 100 : 0}%`;
+        if (headerEl) headerEl.classList.toggle('scrolled', st > 30);
       });
 
       /* ========================================================================
-         3. 3D PERSPECTIVE TILT & HOLOGRAPHIC GLARE ENGINE
+         3. 3D PERSPECTIVE TILT & SPECULAR GLARE
          ======================================================================== */
-      const tiltCards = document.querySelectorAll('.tilt-card');
-      tiltCards.forEach(card => {
+      document.querySelectorAll('.tilt-card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
           if (window.innerWidth < 768) return;
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          card.style.setProperty('--mouse-x', `${x}px`);
-          card.style.setProperty('--mouse-y', `${y}px`);
+          const r = card.getBoundingClientRect();
+          const x = e.clientX - r.left;
+          const y = e.clientY - r.top;
+          card.style.setProperty('--mx', `${x}px`);
+          card.style.setProperty('--my', `${y}px`);
 
-          // Subtle tilt for big hero cards, stronger tilt for project cards
-          const maxTilt = card.classList.contains('project-card') ? 7 : 2.2;
-          const rotateY = ((x / rect.width) - 0.5) * maxTilt * 2;
-          const rotateX = ((0.5 - (y / rect.height))) * maxTilt * 2;
-          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+          const maxDeg = card.classList.contains('project-card') ? 6.5 : 2;
+          const ry = ((x / r.width) - 0.5) * maxDeg * 2;
+          const rx = (0.5 - (y / r.height)) * maxDeg * 2;
+          card.style.transform = `perspective(1000px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translate(-3px, -3px)`;
         });
-
         card.addEventListener('mouseleave', () => {
           card.style.transform = '';
         });
       });
 
       /* ========================================================================
-         4. MATHEMATICAL SVG SKILL RADAR CHART GENERATOR
+         4. NEO-BRUTALIST SVG SKILL RADAR MATRIX
          ======================================================================== */
       const radarSvg = document.getElementById('skill-radar');
       if (radarSvg) {
         const axes = [
-          { label: 'Frontend', val: 0.92 },
+          { label: 'HTML/CSS', val: 0.95 },
           { label: 'Office/Data', val: 0.85 },
-          { label: 'Backend', val: 0.58 },
-          { label: 'Video/Motion', val: 0.65 },
-          { label: 'UI/Design', val: 0.62 }
+          { label: 'JS/Node/PHP', val: 0.55 },
+          { label: 'Video/Motion', val: 0.62 },
+          { label: 'UI/Design', val: 0.58 }
         ];
-        const cx = 120, cy = 120, maxR = 78;
-        let svgContent = '';
+        const cx = 120, cy = 120, maxR = 76;
+        let out = '';
 
-        // Draw Concentric Webs
-        [0.35, 0.68, 1].forEach(level => {
+        [0.35, 0.68, 1].forEach((lvl, i) => {
           const pts = axes.map((_, idx) => {
-            const angle = (Math.PI * 2 * idx) / axes.length - Math.PI / 2;
-            return `${cx + Math.cos(angle) * maxR * level},${cy + Math.sin(angle) * maxR * level}`;
+            const a = (Math.PI * 2 * idx) / axes.length - Math.PI / 2;
+            return `${cx + Math.cos(a) * maxR * lvl},${cy + Math.sin(a) * maxR * lvl}`;
           }).join(' ');
-          svgContent += `<polygon points="${pts}" fill="none" stroke="rgba(88,96,122,0.18)" stroke-width="1"/>`;
+          out += `<polygon points="${pts}" fill="${i === 2 ? 'rgba(255,239,110,0.22)' : 'none'}" stroke="#14141b" stroke-width="1.5" stroke-dasharray="${i < 2 ? '3,3' : 'none'}"/>`;
         });
 
-        // Draw Axis Lines & Labels
-        axes.forEach((axis, idx) => {
-          const angle = (Math.PI * 2 * idx) / axes.length - Math.PI / 2;
-          const x2 = cx + Math.cos(angle) * maxR;
-          const y2 = cy + Math.sin(angle) * maxR;
-          const lx = cx + Math.cos(angle) * (maxR + 24);
-          const ly = cy + Math.sin(angle) * (maxR + 18);
-          svgContent += `<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="rgba(88,96,122,0.18)" stroke-width="1"/>`;
-          svgContent += `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="10.5" font-weight="800" fill="#2c3347">${axis.label}</text>`;
+        axes.forEach((ax, idx) => {
+          const a = (Math.PI * 2 * idx) / axes.length - Math.PI / 2;
+          const x2 = cx + Math.cos(a) * maxR;
+          const y2 = cy + Math.sin(a) * maxR;
+          const lx = cx + Math.cos(a) * (maxR + 25);
+          const ly = cy + Math.sin(a) * (maxR + 18);
+          out += `<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="#14141b" stroke-width="1.5"/>`;
+          out += `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-family="Space Grotesk,sans-serif" font-size="10.5" font-weight="800" fill="#14141b">${ax.label}</text>`;
         });
 
-        // Draw Data Polygon
-        const dataPts = axes.map((axis, idx) => {
-          const angle = (Math.PI * 2 * idx) / axes.length - Math.PI / 2;
-          return `${cx + Math.cos(angle) * maxR * axis.val},${cy + Math.sin(angle) * maxR * axis.val}`;
+        const polyPts = axes.map((ax, idx) => {
+          const a = (Math.PI * 2 * idx) / axes.length - Math.PI / 2;
+          return `${cx + Math.cos(a) * maxR * ax.val},${cy + Math.sin(a) * maxR * ax.val}`;
         }).join(' ');
 
-        svgContent += `
-          <defs>
-            <linearGradient id="radarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#84e6e0" stop-opacity="0.72"/>
-              <stop offset="50%" stop-color="#c9b8ff" stop-opacity="0.72"/>
-              <stop offset="100%" stop-color="#ffb8d9" stop-opacity="0.72"/>
-            </linearGradient>
-          </defs>
-          <polygon points="${dataPts}" fill="url(#radarGrad)" stroke="#227c78" stroke-width="2"/>
-        `;
+        out += `<polygon points="${polyPts}" fill="rgba(255, 156, 227, 0.65)" stroke="#14141b" stroke-width="2.5"/>`;
 
-        axes.forEach((axis, idx) => {
-          const angle = (Math.PI * 2 * idx) / axes.length - Math.PI / 2;
-          const px = cx + Math.cos(angle) * maxR * axis.val;
-          const py = cy + Math.sin(angle) * maxR * axis.val;
-          svgContent += `<circle cx="${px}" cy="${py}" r="4.5" fill="#fff" stroke="#b83b75" stroke-width="2.5"/>`;
+        axes.forEach((ax, idx) => {
+          const a = (Math.PI * 2 * idx) / axes.length - Math.PI / 2;
+          const px = cx + Math.cos(a) * maxR * ax.val;
+          const py = cy + Math.sin(a) * maxR * ax.val;
+          out += `<circle cx="${px}" cy="${py}" r="5" fill="#7ef4e6" stroke="#14141b" stroke-width="2.2"/>`;
         });
 
-        radarSvg.innerHTML = svgContent;
+        radarSvg.innerHTML = out;
       }
 
       /* ========================================================================
-         5. INTERSECTION OBSERVER: REVEAL & ANIMATE SKILL BARS
+         5. SCROLL REVEAL & CANDY SKILL BAR ANIMATION
          ======================================================================== */
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -1347,8 +1745,8 @@
         entries.forEach(e => {
           if (e.isIntersecting) {
             e.target.classList.add('reveal');
-            e.target.querySelectorAll('.bar > i').forEach(bar => {
-              bar.style.width = bar.dataset.width || '50%';
+            e.target.querySelectorAll('.bar > i').forEach(b => {
+              b.style.width = b.dataset.width || '50%';
             });
           }
         });
@@ -1358,25 +1756,21 @@
       /* ========================================================================
          6. INSTANT PROJECT CATEGORY FILTER
          ======================================================================== */
-      const filterBtns = document.querySelectorAll('#project-filters .filter-btn');
-      const projectItems = document.querySelectorAll('#projects-grid .project-card');
+      const filterBtns = document.querySelectorAll('#project-filters .filter-chip');
+      const projectCards = document.querySelectorAll('#projects-grid .project-card');
       filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           filterBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           const cat = btn.dataset.filter;
-          projectItems.forEach(item => {
-            if (cat === 'all' || item.dataset.category === cat) {
-              item.style.display = 'flex';
-            } else {
-              item.style.display = 'none';
-            }
+          projectCards.forEach(c => {
+            c.style.display = (cat === 'all' || c.dataset.category === cat) ? 'flex' : 'none';
           });
         });
       });
 
       /* ========================================================================
-         7. UNIVERSAL MODAL (PROJECTS, VIDEOS, & PROFILE CARD)
+         7. UNIVERSAL MODAL (PROJECTS, VIDEOS, & BRAND POPUP)
          ======================================================================== */
       const modal = document.getElementById('modal');
       const modalCard = document.getElementById('modal-card');
@@ -1390,7 +1784,7 @@
         setTimeout(() => {
           if (modalBody) modalBody.innerHTML = '';
           if (modalCard) modalCard.style.maxWidth = '820px';
-        }, 320);
+        }, 300);
       };
 
       if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -1400,7 +1794,7 @@
         });
       }
 
-      // Open Project Modal with Interactive Image Gallery
+      // Project Cards Modal
       document.querySelectorAll('.project-card:not(.video-card)').forEach(c => {
         c.addEventListener('click', () => {
           const title = c.dataset.title || 'Project';
@@ -1409,26 +1803,27 @@
 
           const images = [];
           for (let i = 1; i <= 10; i++) {
-            if (c.dataset[`img${i}`]) images.push(c.dataset[`img${i}`]);
+            let img = c.dataset[`img${i}`];
+            if (img) images.push(img);
           }
 
-          const techBadges = tech.split(',').map(t => `<span class="tag">${t.trim()}</span>`).join('');
           const screenshotHTML = images.length
             ? images.map(src => `
-                <img src="${src}" alt="${title}" 
+                <img src="${src}" alt="${title}"
                      onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=80'"
-                     style="width:100%; max-width:240px; height:160px; object-fit:cover; border-radius:16px; border:2px solid #fff; box-shadow:0 8px 20px rgba(0,0,0,0.1); cursor:zoom-in; transition:transform 0.3s ease"
+                     style="width:100%; max-width:245px; height:165px; object-fit:cover; border-radius:14px; border:3px solid #14141b; box-shadow:5px 5px 0px #14141b; cursor:zoom-in;"
                      onclick="window.open(this.src, '_blank')">
               `).join('')
             : `<p class="muted">Tidak ada screenshot.</p>`;
 
           modalCard.style.maxWidth = '820px';
           modalBody.innerHTML = `
-            <h2 style="font-family:'Space Grotesk',sans-serif; font-size:26px; margin-bottom:10px;">${title}</h2>
-            <div class="tags" style="margin-bottom:16px;">${techBadges}</div>
-            <p style="color:var(--text-muted); line-height:1.7; font-size:15px;">${desc}</p>
-            <hr style="margin:20px 0; border:none; height:1px; background:rgba(0,0,0,0.08);">
-            <h4 style="font-size:14px; color:var(--text-muted); margin-bottom:12px;">Galeri Tangkap Layar (Klik untuk memperbesar):</h4>
+            <span class="neo-tag yellow" style="margin-bottom:10px;">✦ PROJECT SHOWCASE</span>
+            <h2 style="font-family:'Syne',sans-serif; font-size:26px; margin-bottom:6px;">${title}</h2>
+            <p class="muted" style="font-weight:800; color:#14141b;">Tech Stack: ${tech}</p>
+            <p style="margin-top:12px; font-weight:600; line-height:1.7;">${desc}</p>
+            <hr style="margin:18px 0; border:none; border-top:2.5px dashed #14141b;">
+            <p style="font-family:'Space Grotesk',sans-serif; font-weight:800; margin-bottom:12px;">Tangkap Layar Proyek (Klik untuk perbesar):</p>
             <div style="display:flex; gap:14px; flex-wrap:wrap;">
               ${screenshotHTML}
             </div>
@@ -1438,7 +1833,7 @@
         });
       });
 
-      // Open Video Modal
+      // Video Cards Modal
       document.querySelectorAll('.video-card').forEach(card => {
         card.addEventListener('click', () => {
           const videoLink = card.dataset.video;
@@ -1447,8 +1842,9 @@
           if (videoLink) {
             modalCard.style.maxWidth = '820px';
             modalBody.innerHTML = `
-              <h2 style="font-family:'Space Grotesk',sans-serif; font-size:22px; margin-bottom:14px; color:var(--text-main);">${title}</h2>
-              <div style="position:relative; width:100%; height:70vh; max-height:640px; background:#0f111a; overflow:hidden; border-radius:20px; box-shadow:0 15px 35px rgba(0,0,0,0.2);">
+              <span class="neo-tag pink" style="margin-bottom:8px;">▶ VIDEO PLAYER</span>
+              <h2 style="font-family:'Syne',sans-serif; font-size:22px; margin-bottom:14px; color:var(--ink);">${title}</h2>
+              <div style="position:relative; width:100%; height:72vh; max-height:660px; background:#000; overflow:hidden; border-radius:18px; border:3px solid #14141b; box-shadow:7px 7px 0px #14141b;">
                 <iframe src="${videoLink}" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;" allow="autoplay; fullscreen" allowfullscreen></iframe>
               </div>
             `;
@@ -1458,26 +1854,25 @@
         });
       });
 
-      // Open Brand Profile Popup
+      // Brand Profile Card Popup
       const brandTrigger = document.getElementById('brand-trigger');
       const logoImg = document.querySelector('.logo');
       if (brandTrigger && logoImg) {
         brandTrigger.addEventListener('click', (e) => {
           e.preventDefault();
           const imgSrc = logoImg.getAttribute('src');
-          modalCard.style.maxWidth = '440px';
+          modalCard.style.maxWidth = '450px';
           modalBody.innerHTML = `
-            <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:12px 0;">
-              <div style="padding:6px; background:linear-gradient(135deg, var(--pastel-mint), var(--pastel-lavender), var(--pastel-pink)); border-radius:30px; box-shadow:0 15px 35px rgba(132,230,224,0.45); margin-bottom:20px;">
-                <img src="${imgSrc}" alt="Mochamad Rifki Ramadhan" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80'" style="width:100%; max-width:240px; height:auto; border-radius:24px; display:block; object-fit:cover;">
+            <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding:10px 0;">
+              <div style="padding:8px; background:linear-gradient(135deg, var(--pastel-mint), var(--pastel-yellow), var(--pastel-pink)); border:3px solid #14141b; border-radius:26px; box-shadow:8px 8px 0px #14141b; margin-bottom:22px;">
+                <img src="${imgSrc}" alt="Foto Profil Saya" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80'" style="width:100%; max-width:240px; height:auto; border-radius:18px; border:2px solid #14141b; display:block; object-fit:cover;">
               </div>
-              <h3 style="font-family:'Space Grotesk',sans-serif; font-size:23px; font-weight:800; color:var(--text-main);">Mochamad Rifki Ramadhan</h3>
-              <p class="muted" style="margin-top:4px; font-weight:600;">Mahasiswa S1 Informatika • Fullstack • Ojol</p>
+              <h3 style="font-family:'Syne',sans-serif; font-size:24px; font-weight:800; color:var(--ink);">Mochamad Rifki Ramadhan</h3>
+              <p class="muted" style="margin:6px 0 0 0; font-size:15px; font-weight:800;">Mahasiswa • Fullstack • Ojol</p>
               <div class="tags" style="margin-top:18px; justify-content:center;">
                 <span class="tag">Disiplin</span>
                 <span class="tag">Teliti</span>
                 <span class="tag">Adaptif</span>
-                <span class="tag">Komunikatif</span>
               </div>
             </div>
           `;
@@ -1487,7 +1882,7 @@
       }
 
       /* ========================================================================
-         8. CERTIFICATES DRAG, WHEEL & BUTTON CAROUSEL
+         8. CERTIFICATES CAROUSEL (DRAG + WHEEL + BUTTONS)
          ======================================================================== */
       const certsContainer = document.getElementById('certs-list');
       const certPrev = document.getElementById('cert-prev');
@@ -1496,14 +1891,13 @@
 
       if (certsContainer) {
         certsContainer.style.cursor = 'grab';
-
-        if (certPrev) certPrev.addEventListener('click', () => certsContainer.scrollBy({ left: -310, behavior: 'smooth' }));
-        if (certNext) certNext.addEventListener('click', () => certsContainer.scrollBy({ left: 310, behavior: 'smooth' }));
+        if (certPrev) certPrev.addEventListener('click', () => certsContainer.scrollBy({ left: -315, behavior: 'smooth' }));
+        if (certNext) certNext.addEventListener('click', () => certsContainer.scrollBy({ left: 315, behavior: 'smooth' }));
 
         certsContainer.addEventListener('wheel', (e) => {
           if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
             e.preventDefault();
-            certsContainer.scrollBy({ left: e.deltaY > 0 ? 300 : -300, behavior: 'smooth' });
+            certsContainer.scrollBy({ left: e.deltaY > 0 ? 310 : -310, behavior: 'smooth' });
           }
         }, { passive: false });
 
@@ -1546,7 +1940,7 @@
         if (cover) {
           const originalContent = cert.innerHTML;
           cert.innerHTML = `
-            <img src="${cover}" alt="Sertifikat" onerror="this.src='https://images.unsplash.com/photo-1589330694653-ded6df03f754?w=200&auto=format&fit=crop&q=80'" style="width:68px; height:68px; border-radius:14px; object-fit:cover; flex-shrink:0; border:2px solid #fff; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+            <img src="${cover}" alt="Sertifikat" onerror="this.src='https://images.unsplash.com/photo-1589330694653-ded6df03f754?w=200&auto=format&fit=crop&q=80'" style="width:70px; height:70px; border-radius:12px; object-fit:cover; flex-shrink:0; border:2px solid #14141b; box-shadow:3px 3px 0px #14141b;">
             <div style="flex-grow:1;">${originalContent}</div>
           `;
         }
@@ -1561,7 +1955,7 @@
       });
 
       /* ========================================================================
-         9. CONTACT SCROLL & COPY EMAIL TOAST
+         9. SMOOTH CONTACT SCROLL & COPY EMAIL TOAST
          ======================================================================== */
       const btnContact = document.getElementById('btn-contact');
       const contactSection = document.getElementById('contact');
@@ -1570,12 +1964,12 @@
       }
 
       const copyEmailBtn = document.getElementById('copy-email-btn');
-      const toastBox = document.getElementById('toast-box');
-      if (copyEmailBtn && toastBox) {
+      const neoToast = document.getElementById('neo-toast');
+      if (copyEmailBtn && neoToast) {
         copyEmailBtn.addEventListener('click', () => {
           navigator.clipboard.writeText('mrifkiri@gmail.com');
-          toastBox.classList.add('show');
-          setTimeout(() => toastBox.classList.remove('show'), 2600);
+          neoToast.classList.add('show');
+          setTimeout(() => neoToast.classList.remove('show'), 2600);
         });
       }
 
